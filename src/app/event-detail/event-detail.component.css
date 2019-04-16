@@ -1,0 +1,14 @@
+.event-container {
+  display: grid;
+  grid-template-columns: 15% 25% 45% 15%;
+}
+.event-description, .event-detail {
+  width: 80%;
+  margin: 0 auto;
+}
+.event-detail {
+  grid-column: 2 / 3;
+}
+.event-description {
+  grid-column: 3 / 4;
+}
