@@ -2,13 +2,21 @@
   <mat-card class="event-detail">
     <mat-card-header>
       <mat-card-title>Event Title</mat-card-title>
-      <mat-card-subtitle>Event Category</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p class="location-text">
-        Event Location
-      </p>
+      <p class="category-text">Event Category</p>
+      <p class="location-text">Event Location</p>
+      <p class="startdate-text">Starting Date / Time</p>
+      <p class="enddate-text">Ending Date / Time</p>
+      <h2 class="price-header">Prices:</h2>
+      <ul>
+        <li class="adult-price">Adult Price: $???</li>
+        <li class="child-price">Child Price: $???</li>
+      </ul>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Register</button>
+    </mat-card-actions>
   </mat-card>
   <mat-card class="event-description">
     <img mat-card-image src="/assets/image-not-found.png" alt="Image Not Found" />
