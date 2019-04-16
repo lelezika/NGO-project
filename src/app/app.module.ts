@@ -9,13 +9,21 @@ import { AppComponent } from './app.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
+import { EventManagementComponent } from './event-management/event-management.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EventListComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    EventManagementComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +32,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatCardModule,
     MatGridListModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
