@@ -1,6 +1,7 @@
 export enum EventCategory {Conference, Seminar, Presentation}
 
 export class Event {
+  id: number;
   name: string;
   description: string;
   category: EventCategory;
