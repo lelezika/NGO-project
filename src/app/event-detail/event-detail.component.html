@@ -15,14 +15,15 @@
       </ul>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button *ngIf="selectedEvent.allowRegistration">Register</button>
+      <button mat-button *ngIf="selectedEvent.allowRegistration"
+        (click)="displayForm()">Register</button>
     </mat-card-actions>
   </mat-card>
   <mat-card class="event-description">
     <img mat-card-image src="/assets/image-not-found.png" alt="Image Not Found" />
     <mat-card-content>
       <p class="description-text">
-        Details details details
+        {{ selectedEvent.description }}
       </p>
     </mat-card-content>
   </mat-card>

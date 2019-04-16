@@ -13,10 +13,10 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule} from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { EventManagementComponent } from './event-management/event-management.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-
 import { EventRegistrationFormComponent } from './event-registration-form/event-registration-form.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,8 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     EventListComponent,
     EventDetailComponent,
     EventManagementComponent,
-    PageNotFoundComponent,
     EventRegistrationFormComponent,
+    PageNotFoundComponent,
     UserManagementComponent
   ],
   imports: [
@@ -45,7 +45,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EventRegistrationFormComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

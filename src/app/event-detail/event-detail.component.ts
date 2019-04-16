@@ -4,6 +4,8 @@ import { EventService } from '../event.service';
 import { Event, EventCategory } from '../event';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { EventRegistrationFormComponent } from '../event-registration-form/event-registration-form.component';
 
 @Component({
   selector: 'app-event-detail',
@@ -18,7 +20,8 @@ export class EventDetailComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.selectedEvent = {id: 1, name: 'Event 1',
       description: 'This is an event', category: 0,
@@ -61,6 +64,12 @@ export class EventDetailComponent implements OnInit {
           this.selectedEvent = events[0];
         }
       });
+  }
+
+  displayForm() {
+    const dialogRef = this.dialog.open(EventRegistrationFormComponent, {
+      width: '50%'
+    });
   }
 
 }
