@@ -1,0 +1,14 @@
+<mat-grid-list cols="4" rowHeight="3:4">
+  <mat-grid-tile *ngFor="let event of events;">
+    <mat-card class="event-card">
+      <mat-card-header>
+        <mat-card-title>Event Title</mat-card-title>
+        <mat-card-subtitle>Event Location</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="/assets/image-not-found.png" alt="Image Not Found" />
+      <mat-card-actions>
+        <button mat-button>View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
