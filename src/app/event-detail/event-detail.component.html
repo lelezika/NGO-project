@@ -1,28 +1,29 @@
 <div class="event-container">
   <mat-card class="event-detail">
     <mat-card-header>
-      <mat-card-title>Event Title</mat-card-title>
+      <mat-card-title>{{ selectedEvent.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p class="category-text">Event Category</p>
-      <p class="location-text">Event Location</p>
-      <p class="startdate-text">Starting Date / Time</p>
-      <p class="enddate-text">Ending Date / Time</p>
+      <p class="category-text">Category: {{ EventCategory[selectedEvent.category] }}</p>
+      <p class="location-text">Location: {{ selectedEvent.location }}</p>
+      <p class="startdate-text">Starting time: {{ selectedEvent.startDate }}</p>
+      <p class="enddate-text">Ending time: {{ selectedEvent.endDate }}</p>
       <h2 class="price-header">Prices:</h2>
       <ul>
-        <li class="adult-price">Adult Price: $???</li>
-        <li class="child-price">Child Price: $???</li>
+        <li class="adult-price">Adult Price: ${{ selectedEvent.adultPrice }}</li>
+        <li class="child-price">Child Price: ${{ selectedEvent.childPrice }}</li>
       </ul>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Register</button>
+      <button mat-button *ngIf="selectedEvent.allowRegistration"
+        (click)="displayForm()">Register</button>
     </mat-card-actions>
   </mat-card>
   <mat-card class="event-description">
     <img mat-card-image src="/assets/image-not-found.png" alt="Image Not Found" />
     <mat-card-content>
       <p class="description-text">
-        Details details details
+        {{ selectedEvent.description }}
       </p>
     </mat-card-content>
   </mat-card>
