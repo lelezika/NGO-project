@@ -15,6 +15,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventRegistrationFormComponent } from './event-registration-form/event-registration-form.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
     EventListComponent,
     EventDetailComponent,
     EventRegistrationFormComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

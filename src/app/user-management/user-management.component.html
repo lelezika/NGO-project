@@ -7,6 +7,8 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Role</th>
+      <th>Edit</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +19,14 @@
       <td>{{user.lastname}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
+      <td> <button text-aligned=center>Edit</button> 
+      <td> <button text-aligned=center>Delete</button> 
     </tr>
   </tbody>
 </table>
+
+    <!-- <br>
+    <input type="text" [(ngModel)]="msg" (ngModelChange)='eval1($event)'>
+    <br>
+    <br> -->
+   
