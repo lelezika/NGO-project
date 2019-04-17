@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-management',
@@ -7,15 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserManagementComponent implements OnInit {
   users: any = [
-      {firstname: 'John',
-       lastname: 'Smith',
-       role: 'test1',
-       email: 'test1@email.com'
+      {firstname: 'John', lastname: 'Smith',
+       role: 'test1', email: 'test1@email.com'
       },
-      {firstname: 'Ivan',
-      lastname: 'Drago',
-      role: 'test2',
-      email: 'test2@email.com'
+      {firstname: 'Ivan', lastname: 'Drago',
+      role: 'test2', email: 'test2@email.com'
+      },
+      {firstname: 'Jim', lastname: 'Dow',
+        role: 'test3', email: 'test3@email.com'
       },
     ];
   constructor() { }
@@ -24,3 +23,4 @@ export class UserManagementComponent implements OnInit {
   }
 
 }
+
