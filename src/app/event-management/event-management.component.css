@@ -1,4 +1,7 @@
+.even { background-color : lightgrey; }
+.odd { background-color: lightblue; }
+
 table {
-    
+    /* width: auto; */
+    width: 600px;
   }
-  
