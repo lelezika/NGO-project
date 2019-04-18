@@ -19,8 +19,8 @@
       <td>{{user.lastname}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
-      <td> <button text-aligned=center>Edit</button> 
-      <td> <button text-aligned=center>Delete</button> 
+      <td> <input type="button" (click)="userUpdate(i)" text-aligned="center" value="Edit"> </td>
+      <td> <input type="button" (click)="userDelete(i)" text-aligned="center" value="Delete"></td>
     </tr>
   </tbody>
 </table>

@@ -1,0 +1,11 @@
+[
+  {"firstname": "John", "lastname": "Smith",
+   "email": "admin@email.com", "password": "", "role": "admin"
+  },
+  {"firstname": "Ivan", "lastname": "Drago",
+    "email": "user1@email.com", "password": "", "role": "user1"
+  },
+  {"firstname": "Jim", "lastname": "Dow",
+    "email": "user2@email.com", "password": "", "role": "user2"
+  }
+]

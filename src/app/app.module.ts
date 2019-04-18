@@ -22,7 +22,8 @@ import {
   MatSidenavModule,
   MatStepperModule,
   MatPaginator,
-  MatTooltip
+  MatTooltip,
+  MatMenu
 } from '@angular/material';
 
 import { AdminComponent } from './admin/admin.component';
@@ -38,6 +39,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { UserService } from './user.service';
+import { EventService } from './event.service';
 
 @NgModule({
   declarations: [
@@ -51,14 +54,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     UserManagementComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
-<<<<<<< HEAD
     UserViewComponent,
     NavBarComponent,
     MatPaginator,
-    MatTooltip
-=======
+    MatTooltip,
     UserViewComponent
->>>>>>> f13c054a9f5f46758ade4d5fe39f0030a38d8388
   ],
   imports: [
     AppRoutingModule,
@@ -81,17 +81,13 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatSelectModule,
     MatSidenavModule,
     MatStepperModule,
-<<<<<<< HEAD
     ReactiveFormsModule,
     MatMenuModule
-=======
-    ReactiveFormsModule
->>>>>>> f13c054a9f5f46758ade4d5fe39f0030a38d8388
   ],
   entryComponents: [
     EventRegistrationFormComponent
   ],
-  providers: [],
+  providers: [EventService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
