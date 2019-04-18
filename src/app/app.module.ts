@@ -51,10 +51,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     UserManagementComponent,
     UserDetailsComponent,
     PageNotFoundComponent,
+<<<<<<< HEAD
     UserViewComponent,
     NavBarComponent,
     MatPaginator,
     MatTooltip
+=======
+    UserViewComponent
+>>>>>>> f13c054a9f5f46758ade4d5fe39f0030a38d8388
   ],
   imports: [
     AppRoutingModule,
@@ -77,8 +81,12 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatSelectModule,
     MatSidenavModule,
     MatStepperModule,
+<<<<<<< HEAD
     ReactiveFormsModule,
     MatMenuModule
+=======
+    ReactiveFormsModule
+>>>>>>> f13c054a9f5f46758ade4d5fe39f0030a38d8388
   ],
   entryComponents: [
     EventRegistrationFormComponent
