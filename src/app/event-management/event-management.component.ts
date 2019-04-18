@@ -61,14 +61,6 @@ export class EventManagementComponent implements OnInit {
 
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   onAddNewEvent(): void {
     this.eventsService.setModuleHeader("Create New Event");
     this.router.navigate(['/admin/create-event']);
@@ -81,6 +73,31 @@ export class EventManagementComponent implements OnInit {
     this.eventsService.setModuleHeader("Edit Event ( "+ val.eventName +" )");
     this.router.navigate(['/admin/edit-event', val.id]);
   }
+
+  // onDeleteEvent(event: NgoEvent) {
+  //   /**
+  //    * Passing the selected event to be deleted to eventsService to create an observable of BehaviourSubject
+  //    */
+  //   this.eventsService.eventToDelete(event);
+  //   /**
+  //    * opening the DeleteEventComponent as popup dialog
+  //    */
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.width = 'auto';
+
+  //   const dialogRef = this.dialog.open(DeleteEventComponent, dialogConfig);
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     // location.reload();
+  //     this.eventsSub = this.eventsService.getEventUpdateListener()
+  //     .subscribe((events: NgoEvent[]) => {
+  //       this.events = events;
+  //     });
+  //   });
+  // }
 
 }
 

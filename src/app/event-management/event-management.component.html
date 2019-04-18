@@ -28,262 +28,134 @@
 
  -->
 
+ <button
+ mat-raised-button
+ color="primary"
+ (click)="onAddNewEvent()"
+ style="float: right"
+>
+ Add a new Event
+</button>
 
- <mat-spinner *ngIf="isLoading"></mat-spinner>
- <mat-horizontal-stepper #stepper (submit)="onSaveEvent()" *ngIf="!isLoading" >
-   <!-- #################### Event Details #################################### -->
-   <mat-step [stepControl]="eventGroup">
-     <form [formGroup]="eventGroup">
-       <ng-template matStepLabel>Event Details</ng-template>
-       <table class="w-80">
-         <tr>
-           <td class="pr-1">
-             <mat-form-field class="w-100">
-               <input
-                 matInput
-                 placeholder="Event Title*"
-                 formControlName="eventNameCtrl"
-               />
-               <mat-error *ngIf="eventGroup.get('eventNameCtrl').invalid">
-                 Please enter a event title.
-               </mat-error>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field>
-               <mat-select
-                 placeholder="Category*"
-                 formControlName="categoryCtrl"
-               >
-                 <mat-option value="Event">Event</mat-option>
-                 <mat-option value="SocialService">Social Service</mat-option>
-               </mat-select>
-               <mat-error *ngIf="eventGroup.get('categoryCtrl').invalid">
-                 Please select a category type.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-         <tr>
-           <td colspan="2">
-             <mat-form-field class="w-100">
-               <textarea
-                 matInput
-                 placeholder="Description*"
-                 formControlName="descriptionCtrl"
-                 rows="5"
-               ></textarea>
-               <mat-error *ngIf="eventGroup.get('descriptionCtrl').invalid">
-                 Please write some description for the event.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-         <tr>
-           <td colspan="2">
-             <mat-form-field>
-               <mat-select placeholder="Status*" formControlName="statusCtrl">
-                 <mat-option value="Active">Active</mat-option>
-                 <mat-option value="In-Active">In-Active</mat-option>
-               </mat-select>
-               <mat-error *ngIf="eventGroup.get('statusCtrl').invalid">
-                 Please select a status.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-       </table>
- 
-       <div>
-         <button mat-raised-button matStepperNext style="margin: 10px; color: midnightblue">Next   <mat-icon>arrow_forward</mat-icon></button>
-         <button mat-raised-button [routerLink]="['/admin/event-management']" style="margin: 10px;color: tomato">Cancel   <mat-icon>cancel</mat-icon></button>
-       </div>
-     </form>
-   </mat-step>
-   <!-- #################### Location Details #################################### -->
-   <mat-step [stepControl]="locationGroup">
-     <form [formGroup]="locationGroup">
-       <ng-template matStepLabel>Location</ng-template>
-       <table class="w-80">
-         <tr>
-           <td class="pr-1">
-             <mat-form-field class="w-100">
-               <input
-                 matInput
-                 placeholder="Street*"
-                 formControlName="streetCtrl"
-               />
-               <mat-error *ngIf="locationGroup.get('streetCtrl').invalid">
-                 please provide a street name.
-               </mat-error>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field class="w-80">
-               <input matInput placeholder="City*" formControlName="cityCtrl" />
-               <mat-error *ngIf="locationGroup.get('cityCtrl').invalid">
-                 please provide a city name.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-         <tr>
-           <td class="pr-1">
-             <mat-form-field class="w-100">
-               <input
-                 matInput
-                 placeholder="State*"
-                 formControlName="stateCtrl"
-               />
-               <mat-error *ngIf="locationGroup.get('stateCtrl').invalid">
-                 please provide a state name.
-               </mat-error>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field class="w-50">
-               <input
-                 matInput
-                 placeholder="ZipCode*"
-                 formControlName="zipCodeCtrl"
-               />
-               <mat-error *ngIf="locationGroup.get('zipCodeCtrl').invalid">
-                 please provide a zipCode.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-       </table>
- 
-       <div>
-         <button mat-raised-button matStepperPrevious style="margin: 10px;"><mat-icon>arrow_backward</mat-icon>   Back</button>
-         <button mat-raised-button matStepperNext style="margin: 10px; color: midnightblue">Next   <mat-icon>arrow_forward</mat-icon></button>
-         <button mat-raised-button [routerLink]="['/admin/event-management']" style="margin: 10px;color: tomato">Cancel   <mat-icon>cancel</mat-icon></button>
-       </div>
-     </form>
-   </mat-step>
-   <!-- #################### Date & Time Details #################################### -->
-   <mat-step [stepControl]="dateTimeGroup">
-     <form [formGroup]="dateTimeGroup">
-       <ng-template matStepLabel>Date & Time</ng-template>
-       <table class="w-60">
-         <tr>
-           <td class="pr-1">
-             <mat-form-field>
-               <input matInput [matDatepicker]="sDatePicker" placeholder="Start Date*" formControlName="sDateCtrl">
-               <mat-datepicker-toggle matSuffix [for]="sDatePicker"></mat-datepicker-toggle>
-               <mat-datepicker #sDatePicker></mat-datepicker>
-               <mat-error *ngIf="dateTimeGroup.get('sDateCtrl').invalid">
-                 please provide a Start Date.
-               </mat-error>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field>
-               <input matInput [matDatepicker]="eDatePicker" placeholder="End Date*" formControlName="eDateCtrl">
-               <mat-datepicker-toggle matSuffix [for]="eDatePicker"></mat-datepicker-toggle>
-               <mat-datepicker #eDatePicker></mat-datepicker>
-               <mat-error *ngIf="dateTimeGroup.get('eDateCtrl').invalid">
-                 please provide a End Date.
-               </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-         <tr>
-           <td class="pr-1">
-             <mat-form-field>
-               <input matInput placeholder="Start Time*" formControlName="sTimeCtrl"/>
-               <mat-error *ngIf="dateTimeGroup.get('sTimeCtrl').invalid">
-                 please provide a Start Time.
-               </mat-error>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field>
-               <input matInput placeholder="End Time*" formControlName="eTimeCtrl"/>
-               <mat-error *ngIf="dateTimeGroup.get('eTimeCtrl').invalid">
-                   please provide a End Time.
-                 </mat-error>
-             </mat-form-field>
-           </td>
-         </tr>
-       </table>
-       <div>
-           <button mat-raised-button matStepperPrevious style="margin: 10px;"><mat-icon>arrow_backward</mat-icon>   Back</button>
-           <button mat-raised-button matStepperNext style="margin: 10px; color: midnightblue">Next   <mat-icon>arrow_forward</mat-icon></button>
-           <button mat-raised-button [routerLink]="['/admin/event-management']" style="margin: 10px;color: tomato">Cancel   <mat-icon>cancel</mat-icon></button>
-       </div>
-     </form>
-   </mat-step>
-   <!-- #################### Ticket Price Details #################################### -->
-   <mat-step [stepControl]="ticketGroup">
-     <form [formGroup]="ticketGroup">
-       <ng-template matStepLabel>Ticket Price</ng-template>
-       <table class="w-60">
-         <tr>
-           <td colspan="2"><i style="color:blue;">Leave empty if free event!</i></td>
-         </tr>
-         <tr>
-           <td class="pr-1">
-             <mat-form-field>
-               <input matInput placeholder="Adult Ticket Price" formControlName="adltTktPriceCtrl" type="number">
-               <span matPrefix>$&nbsp;</span>
-             </mat-form-field>
-           </td>
-           <td>
-             <mat-form-field>
-               <input matInput placeholder="Child Ticket Price" formControlName="chldTktPriceCtrl" type="number">
-               <span matPrefix>$&nbsp;</span>
-             </mat-form-field>
-           </td>
-         </tr>
-       </table>
-       <div>
-           <button mat-raised-button matStepperPrevious style="margin: 10px;"><mat-icon>arrow_backward</mat-icon>   Back</button>
-           <button mat-raised-button matStepperNext style="margin: 10px; color: midnightblue">Next   <mat-icon>arrow_forward</mat-icon></button>
-           <button mat-raised-button [routerLink]="['/admin/event-management']" style="margin: 10px;color: tomato">Cancel   <mat-icon>cancel</mat-icon></button>
-       </div>
-     </form>
-   </mat-step>
-   <!-- #################### Image Details #################################### -->
-   <mat-step [stepControl]="imageGroup">
-     <form [formGroup]="imageGroup">
-       <ng-template matStepLabel>Upload Image</ng-template>
-       <div>
-         <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
-         <input type="file" #filePicker (change)="onImagePicked($event)">
-       </div>
-       <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && imageGroup.get('imageCtrl').valid">
-         <img [src]="imagePreview" [alt]="imageGroup.value.title">
-       </div>
-       <div *ngIf="!isImage">
-           <mat-error>File selected is not an image type.</mat-error>
-       </div>
- 
-       <div>
-           <button mat-raised-button matStepperPrevious style="margin: 10px;"><mat-icon>arrow_backward</mat-icon>   Back</button>
-             <button mat-raised-button (click)="stepper.reset()" style="margin: 10px; color: midnightblue"><mat-icon>autorenew</mat-icon>   Reset</button>
-             <button mat-raised-button type="submit" style="margin: 10px; color: rgb(30, 218, 5)">Save Event <mat-icon>how_to_reg</mat-icon></button>
-             <button mat-raised-button [routerLink]="['/admin/event-management']" style="margin: 10px; color: tomato">Cancel   <mat-icon>cancel</mat-icon></button>
- 
-       </div>
-     </form>
-   </mat-step>
-   <!-- <mat-step>
-     <ng-template matStepLabel>Done</ng-template>
-       Press save to save the Event
-     <div>
-       <button mat-raised-button matStepperPrevious style="margin: 10px;">Back</button>
-       <button mat-raised-button (click)="stepper.reset()" style="margin: 10px;">Reset</button>
-       <button mat-raised-button color="accent" type="submit" style="margin: 10px;">Save</button>
-     </div>
-   </mat-step> -->
- </mat-horizontal-stepper>
- 
- <!-- <div mat-dialog-actions>
-   <button mat-button cdkFocusInitial>
-     Create
-   </button>
-   <button mat-button (click)="onClickedCancel()">Cancel</button>
- </div> -->
- 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="mat-elevation-z8" *ngIf = "events.length > 0 && !isLoading">
+ <table mat-table [dataSource]="dataSource" matSort>
+   <!-- ID Column -->
+   <!-- <ng-container matColumnDef="id">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+     <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+   </ng-container> -->
+
+   <!-- Event Name Column -->
+   <ng-container matColumnDef="event">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Events</th>
+     <td mat-cell *matCellDef="let row">{{ row.eventName }}</td>
+   </ng-container>
+
+   <!-- Category Column -->
+   <ng-container matColumnDef="ctgy">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+       <td mat-cell *matCellDef="let row">
+         {{ row.category }}
+       </td>
+     </ng-container>
+
+   <!-- Description Column -->
+   <ng-container matColumnDef="desc">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+     <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+   </ng-container>
+
+   <!-- Status Column -->
+   <ng-container matColumnDef="status">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+       <td mat-cell *matCellDef="let row">
+         {{ row.status }}
+       </td>
+     </ng-container>
+
+   <!-- Location Column -->
+   <ng-container matColumnDef="location">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+       <td mat-cell *matCellDef="let row">
+         {{ row.location }}
+       </td>
+     </ng-container>
+
+
+   <!-- StartDate Column -->
+   <ng-container matColumnDef="sDate">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
+     <td mat-cell *matCellDef="let row">
+       {{ row.startDate }}
+     </td>
+   </ng-container>
+
+   <!-- EndDate Column -->
+   <ng-container matColumnDef="eDate">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>End Date</th>
+     <td mat-cell *matCellDef="let row">
+       {{ row.endDate }}
+     </td>
+   </ng-container>
+
+   <!-- Start Time Column -->
+   <ng-container matColumnDef="sTime">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Time</th>
+     <td mat-cell *matCellDef="let row">
+       {{ row.startTime }}
+     </td>
+   </ng-container>
+
+   <!-- End Time Column -->
+   <ng-container matColumnDef="eTime">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>End Time</th>
+     <td mat-cell *matCellDef="let row">
+       {{ row.endTime }}
+     </td>
+   </ng-container>
+
+   <!-- Adult Ticket Price Column -->
+   <ng-container matColumnDef="adltTktPrice">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>
+       Adult Ticket Price
+     </th>
+     <td mat-cell *matCellDef="let row" [style.color]="row.color">
+       {{ row.adultTicketPrice }}
+     </td>
+   </ng-container>
+
+   <!-- Child Ticket Price Column -->
+   <ng-container matColumnDef="chldTktPrice">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>
+       Child Ticket Price
+     </th>
+     <td mat-cell *matCellDef="let row" [style.color]="row.color">
+       {{ row.childTicketPrice }}
+     </td>
+   </ng-container>
+
+   <!-- Image Column -->
+   <ng-container matColumnDef="img">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+       <td mat-cell *matCellDef="let row">
+         <img  [src]="row.imagePath" [alt]="row.eventName" class="event-image">
+       </td>
+     </ng-container>
+
+   <ng-container matColumnDef="action">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+     <td mat-cell *matCellDef="let row">
+       <a (click)="onEditEvent(row)" style="cursor: pointer; color: midnightblue"
+         ><mat-icon>edit</mat-icon></a>
+       <a (click)="onDeleteEvent(row)" style="cursor: pointer; color: tomato"
+         ><mat-icon>delete</mat-icon></a>
+     </td>
+   </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+ </table>
+
+ <mat-paginator [pageSizeOptions]="[3, 5, 10, 25, 100]"></mat-paginator>
+</div>
