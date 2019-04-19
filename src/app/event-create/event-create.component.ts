@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { EventService, NgoEvent } from '../event.service';
+import { EventService } from '../event.service';
 import { ParamMap, Router } from '@angular/router';
-import { EventCategory } from '../event';
+import { Event, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
 import { mimeType } from './mime-type.validator';
 
 @Component({
@@ -13,11 +13,10 @@ import { mimeType } from './mime-type.validator';
 export class EventCreateComponent implements OnInit {
   [x: string]: any;
 
-  categories = Object.keys(EventCategory)
-    .filter(k => typeof EventCategory[k as any] === 'number');
-  EventCategory = EventCategory;
+  categories = EVENT_CATEGORIES;
+  statuses = EVENT_STATUSES;
 
-  eventData = new NgoEvent();
+  eventData = new Event();
   eventForm = new FormGroup({
     eventName: new FormControl(null),
     category: new FormControl(null),
@@ -32,29 +31,11 @@ export class EventCreateComponent implements OnInit {
     childTicketPrice: new FormControl(null),
     imageurl: new FormControl(null)
   });
-  imagePreview: string;
 
   constructor(private eventservice:EventService,private router:Router) {
-    
-   }
-
-  ngOnInit() {
   }
 
-
-
-
-    onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.eventForm.get('imageCtrl').updateValueAndValidity();
-    /**
-     * Displaying and validating Image as soon as picked
-     */
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result.toString();
-    };
-    reader.readAsDataURL(file);
+  ngOnInit() {
   }
 
   onSubmit(){
