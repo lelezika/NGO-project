@@ -20,13 +20,15 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], children: [
-    {path: 'user-view', component: UserViewComponent},
     {path: 'user-management', component: UserManagementComponent},
     {path: 'event-management', component: EventManagementComponent},
     {path: 'create-event', component: EventCreateComponent},
+    { path: 'eventlist', component: UserViewComponent },
+    { path: 'events/:id', component: UserViewEventComponent },
     {path: 'edit-event/:eventId', component: EventCreateComponent}
   ]},
   { path: 'eventlist', component: EventListComponent },
+  { path: 'events/:id', component: EventDetailComponent },
   // {path: 'add-user', component: AddUserComponent, canActivate: [AdminAuthGuard]},
   // {path: 'edit-user/:email', component: EditUserComponent, canActivate: [AdminAuthGuard]},
   // {path: 'delete-user/:email', component: DeleteUserComponent, canActivate: [AdminAuthGuard]},

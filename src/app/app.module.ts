@@ -3,11 +3,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatCardModule} from '@angular/material/card';
 
 import {
   MatButtonModule,
+  MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
@@ -15,6 +14,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
   MatProgressSpinnerModule,
   MatTableModule,
   MatToolbarModule,
@@ -26,7 +26,9 @@ import {
   MatCard
 } from '@angular/material';
 
+import { AdminAuthGuard } from './auth/admin-auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventCreateComponent } from './event-create/event-create.component';
@@ -34,18 +36,17 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventManagementComponent } from './event-management/event-management.component';
 import { EventRegistrationFormComponent } from './event-registration-form/event-registration-form.component';
+import { EventService } from './event.service';
+import { LoginComponent } from './auth/login/login.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserViewComponent } from './user-view/user-view.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { EventService } from './event.service';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { AuthInterceptor } from './auth/auth-interceptor';
+import { UserViewEventComponent } from './user-view-event/user-view-event.component';
 import { UserService } from './user.service';
-import { AdminAuthGuard } from './auth/admin-auth.guard';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -56,15 +57,16 @@ import { AdminAuthGuard } from './auth/admin-auth.guard';
     EventListComponent,
     EventManagementComponent,
     EventRegistrationFormComponent,
-    UserManagementComponent,
-    UserDetailsComponent,
-    PageNotFoundComponent,
-    UserViewComponent,
-    NavBarComponent,
+    LoginComponent,
     MatPaginator,
     MatTooltip,
-    LoginComponent,
-    SignupComponent
+    NavBarComponent,
+    PageNotFoundComponent,
+    UserDetailsComponent,
+    UserManagementComponent,
+    UserViewComponent,
+    UserViewEventComponent,
+    SignupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -81,6 +83,7 @@ import { AdminAuthGuard } from './auth/admin-auth.guard';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatMenuModule,
     MatProgressSpinnerModule,
     MatTableModule,
     MatToolbarModule,
@@ -88,9 +91,6 @@ import { AdminAuthGuard } from './auth/admin-auth.guard';
     MatSidenavModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatMenuModule,
-    MatCardModule,
-    
   ],
   entryComponents: [
     EventRegistrationFormComponent
