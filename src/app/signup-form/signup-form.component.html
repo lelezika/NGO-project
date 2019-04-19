@@ -1,0 +1,27 @@
+<mat-card class="form-container">
+  <form [formGroup]="signupForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="first name" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="last name" formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" placeholder="email" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="password" formControlName="password" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of userRoles" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-button type="submit">Sign Up</button>
+    </mat-dialog-actions>
+  </form>
+</mat-card>

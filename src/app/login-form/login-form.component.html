@@ -1,0 +1,13 @@
+<mat-card class="form-container">
+  <form [formGroup]="loginForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="username" formControlName="username" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="password" formControlName="password" />
+    </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-button type="submit">Login</button>
+    </mat-dialog-actions>
+  </form>
+</mat-card>

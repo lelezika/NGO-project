@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventService, NgoEvent } from '../event.service';
-import { ParamMap } from '@angular/router';
+import { ParamMap, Router } from '@angular/router';
+import { EventCategory } from '../event';
+import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-event-create',
@@ -9,8 +11,13 @@ import { ParamMap } from '@angular/router';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent implements OnInit {
+  [x: string]: any;
 
-  eventData:NgoEvent;
+  categories = Object.keys(EventCategory)
+    .filter(k => typeof EventCategory[k as any] === 'number');
+  EventCategory = EventCategory;
+
+  eventData = new NgoEvent();
   eventForm = new FormGroup({
     eventName: new FormControl(null),
     category: new FormControl(null),
@@ -23,13 +30,35 @@ export class EventCreateComponent implements OnInit {
     endTime: new FormControl(null),
     adultTicketPrice: new FormControl(null),
     childTicketPrice: new FormControl(null),
-    // image: new FormControl(null)
+    imageurl: new FormControl(null)
   });
   imagePreview: string;
 
-  constructor(private eventservice:EventService) { }
+  constructor(private eventservice:EventService,private router:Router) {
+    
+   }
 
   ngOnInit() {
+  }
+
+
+
+
+    onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.eventForm.get('imageCtrl').updateValueAndValidity();
+    /**
+     * Displaying and validating Image as soon as picked
+     */
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result.toString();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  onSubmit(){
+    
     this.eventData.eventName = this.eventForm.get("eventName").value
     this.eventData.category = this.eventForm.get("category").value
     this.eventData.description = this.eventForm.get("description").value
@@ -41,27 +70,12 @@ export class EventCreateComponent implements OnInit {
     this.eventData.location = this.eventForm.get("location").value
     this.eventData.adultTicketPrice = this.eventForm.get("adultTicketPrice").value
     this.eventData.childTicketPrice = this.eventForm.get("childTicketPrice").value
-  }
-
-  
-
-
-  //   onImagePicked(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files[0];
-  //   this.eventForm.get('imageCtrl').updateValueAndValidity();
-  //   /**
-  //    * Displaying and validating Image as soon as picked
-  //    */
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imagePreview = reader.result.toString();
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
-
-  onsubmit(){
+    this.eventData.imagePath = this.eventForm.get("imageurl").value
+    this.eventservice.addEvent(this.eventData)
+    // this.eventservice.addEvent(this.eventData).subscribe(event => this.heroes.push(event));
+    // this.router.navigate(["/admin/event-management"]);
+    console.log(this.eventData)
     
-    console.log(this.eventForm.value)
   }
 
 }

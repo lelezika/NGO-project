@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 
 import {
   MatButtonModule,
-  MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
@@ -23,7 +23,7 @@ import {
   MatStepperModule,
   MatPaginator,
   MatTooltip,
-  MatMenu
+  MatCard
 } from '@angular/material';
 
 import { AdminComponent } from './admin/admin.component';
@@ -41,6 +41,8 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UserService } from './user.service';
 import { EventService } from './event.service';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +60,8 @@ import { EventService } from './event.service';
     NavBarComponent,
     MatPaginator,
     MatTooltip,
-    UserViewComponent,
-    MatTooltip
+    LoginFormComponent,
+    SignupFormComponent
   ],
   imports: [
     AppRoutingModule,
@@ -83,7 +85,8 @@ import { EventService } from './event.service';
     MatSidenavModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   entryComponents: [
     EventRegistrationFormComponent
