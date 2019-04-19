@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../event.service';
 import { Event } from '../event';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-list',
@@ -15,6 +15,7 @@ export class EventListComponent implements OnInit {
 
   constructor(
     private eventService: EventService,
+    private route: ActivatedRoute,
     private router: Router
    ) { }
 
@@ -26,7 +27,7 @@ export class EventListComponent implements OnInit {
   }
 
   getDetailView(id: number) {
-    this.router.navigate(['/events', id]);
+    this.router.navigate(['../events', id], {relativeTo: this.route});
   }
 
 }
