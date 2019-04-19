@@ -45,10 +45,10 @@ export class EventManagementComponent implements OnInit {
   }
 
 
-  // onAddNewEvent(): void {
-  //   this.eventsService.setModuleHeader("Create New Event");
-  //   this.router.navigate(['/admin/create-event']);
-  // }
+  onAddNewEvent(): void {
+    this.eventsService.setModuleHeader("Create New Event");
+    this.router.navigate(['/admin/create-event']);
+  }
 
   /**
    * PopUp form for Editing New Event (EDIT EVENT)

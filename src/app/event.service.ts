@@ -47,7 +47,7 @@ export class EventService {
   }
 
   getEventList(): Observable<NgoEvent[]> {
-    return this.http.get<NgoEvent[]>(this.eventurl);
+    return this.http.get<NgoEvent[]>('http://localhost:4000/api/events')
   }
 
   getOneEvent(id: number): Observable<NgoEvent> {

@@ -35,17 +35,7 @@ export class EventCreateComponent implements OnInit {
   constructor(private eventservice:EventService) { }
 
   ngOnInit() {
-    this.eventData.eventName = this.eventForm.get("eventName").value
-    this.eventData.category = this.eventForm.get("category").value
-    this.eventData.description = this.eventForm.get("description").value
-    this.eventData.startDate = this.eventForm.get("startDate").value
-    this.eventData.endDate = this.eventForm.get("endDate").value
-    this.eventData.startTime = this.eventForm.get("startTime").value
-    this.eventData.status = this.eventForm.get("status").value
-    this.eventData.endTime = this.eventForm.get("endTime").value
-    this.eventData.location = this.eventForm.get("location").value
-    this.eventData.adultTicketPrice = this.eventForm.get("adultTicketPrice").value
-    this.eventData.childTicketPrice = this.eventForm.get("childTicketPrice").value
+    
   }
 
 
@@ -64,8 +54,20 @@ export class EventCreateComponent implements OnInit {
   //   reader.readAsDataURL(file);
   // }
 
-  onSubmit() {
-    console.log(this.eventForm.value);
+  onsubmit(){
+    this.eventData.eventName = this.eventForm.get("eventName").value
+    this.eventData.category = this.eventForm.get("category").value
+    this.eventData.description = this.eventForm.get("description").value
+    this.eventData.startDate = this.eventForm.get("startDate").value
+    this.eventData.endDate = this.eventForm.get("endDate").value
+    this.eventData.startTime = this.eventForm.get("startTime").value
+    this.eventData.status = this.eventForm.get("status").value
+    this.eventData.endTime = this.eventForm.get("endTime").value
+    this.eventData.location = this.eventForm.get("location").value
+    this.eventData.adultTicketPrice = this.eventForm.get("adultTicketPrice").value
+    this.eventData.childTicketPrice = this.eventForm.get("childTicketPrice").value
+    
+ 
   }
 
 }
