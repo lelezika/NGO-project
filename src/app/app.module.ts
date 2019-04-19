@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 
 import {
   MatButtonModule,
-  MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
@@ -22,7 +22,8 @@ import {
   MatSidenavModule,
   MatStepperModule,
   MatPaginator,
-  MatTooltip
+  MatTooltip,
+  MatCard
 } from '@angular/material';
 
 import { AdminComponent } from './admin/admin.component';
@@ -79,7 +80,8 @@ import { EventService } from './event.service';
     MatSidenavModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   entryComponents: [
     EventRegistrationFormComponent
