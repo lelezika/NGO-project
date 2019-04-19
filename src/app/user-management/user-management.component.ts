@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user-management',
@@ -6,21 +8,42 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
-  users: any = [
-      {firstname: 'John', lastname: 'Smith',
-       role: 'test1', email: 'test1@email.com'
-      },
-      {firstname: 'Ivan', lastname: 'Drago',
-      role: 'test2', email: 'test2@email.com'
-      },
-      {firstname: 'Jim', lastname: 'Dow',
-        role: 'test3', email: 'test3@email.com'
-      },
-    ];
-  constructor() { }
+  public userslist: User[] = [];
+  // users: User[] = [
+  //     {firstname: 'John', lastname: 'Smith',
+  //      email: 'test1@email.com', password: '', role: 'test1'
+  //     },
+  //     {firstname: 'Ivan', lastname: 'Drago',
+  //     email: 'test2@email.com', password: '', role: 'test2'
+  //     },
+  //     {firstname: 'Jim', lastname: 'Dow',
+  //      email: 'test3@email.com', password: '', role: 'test3'
+  //     },
+  //   ];
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    // this.userService.getUsers().subscribe(
+    //     (data) => {
+    //   // this.userService.getUsers(this.userService).subscribe((res)=>{
+    //     console.log(data);
+    //     this.userslist = data;
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     });
+    this.findUserList();
   }
 
+  findUserList(): void {
+    this.userService.getUsers().subscribe(data => this.userslist = data);
+  }
+
+  public userDelete(i: any) {
+    this.userService.deleteUser(this.userslist[i].email);
+  }
+  public userUpdate(i: any) {
+    this.userService.updateUser(this.userslist[i]);
+  }
 }
 
