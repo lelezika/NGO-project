@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +41,11 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventService } from './event.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { UserService } from './user.service';
+import { AdminAuthGuard } from './auth/admin-auth.guard';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     NavBarComponent,
     MatPaginator,
     MatTooltip,
-    LoginFormComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     AppRoutingModule,
@@ -83,12 +89,15 @@ import { LoginFormComponent } from './login-form/login-form.component';
     MatStepperModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    
   ],
   entryComponents: [
     EventRegistrationFormComponent
   ],
-  providers: [EventService],
+  providers: [EventService,AdminAuthGuard,UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

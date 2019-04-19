@@ -3,10 +3,11 @@ import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Subject } from "rxjs";
 
+import { AuthData } from "./auth-data.model";
 import { last } from 'rxjs/operators';
 
 @Injectable({ providedIn: "root" })
-export class AuthenticationService {
+export class AuthService {
   private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
@@ -37,7 +38,7 @@ export class AuthenticationService {
   }
 
   createUser(firstName: string, lastName: string, email: string, password: string, role: string = "User") {
-    const authData: User = {firstName: firstName, lastName: lastName, email: email, password: password, role: role };
+    const authData: AuthData = {firstName: firstName, lastName: lastName, email: email, password: password, role: role };
     // console.log(authData);
     this.http
       .post("http://localhost:4000/api/user/signup", authData)
@@ -48,7 +49,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    const authData: User = {firstName: '', lastName: '', email: email, password: password, role: '' };
+    const authData: AuthData = {firstName: '', lastName: '', email: email, password: password, role: '' };
     this.http
       .post<{ token: string; expiresIn: number, role: string }>(
         "http://localhost:4000/api/user/login",
@@ -134,15 +135,5 @@ export class AuthenticationService {
       expirationDate: new Date(expirationDate),
       role: role
     };
-
-    
   }
-  
-}
-export interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  role: string;
 }
