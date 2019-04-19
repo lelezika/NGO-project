@@ -8,35 +8,42 @@ import { User } from '../user';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
-  users: User[] = [
-      {firstname: 'John', lastname: 'Smith',
-       email: 'test1@email.com', password: '', role: 'test1'
-      },
-      {firstname: 'Ivan', lastname: 'Drago',
-      email: 'test2@email.com', password: '', role: 'test2'
-      },
-      {firstname: 'Jim', lastname: 'Dow',
-       email: 'test3@email.com', password: '', role: 'test3'
-      },
-    ];
+  public userslist: User[] = [];
+  // users: User[] = [
+  //     {firstname: 'John', lastname: 'Smith',
+  //      email: 'test1@email.com', password: '', role: 'test1'
+  //     },
+  //     {firstname: 'Ivan', lastname: 'Drago',
+  //     email: 'test2@email.com', password: '', role: 'test2'
+  //     },
+  //     {firstname: 'Jim', lastname: 'Dow',
+  //      email: 'test3@email.com', password: '', role: 'test3'
+  //     },
+  //   ];
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(
-        (data) => {
-      // this.userService.getUsers(this.userService).subscribe((res)=>{
-        console.log(data);
-        this.users = data;
-        },
-        (err) => {
-          console.log(err);
-        });
+    // this.userService.getUsers().subscribe(
+    //     (data) => {
+    //   // this.userService.getUsers(this.userService).subscribe((res)=>{
+    //     console.log(data);
+    //     this.userslist = data;
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     });
+    this.findUserList();
   }
+
+  findUserList(): void {
+    this.userService.getUsers().subscribe(data => this.userslist = data);
+  }
+
   public userDelete(i: any) {
-    this.userService.deleteUser(this.users[i].email);
+    this.userService.deleteUser(this.userslist[i].email);
   }
   public userUpdate(i: any) {
-    this.userService.updateUser(this.users[i]);
+    this.userService.updateUser(this.userslist[i]);
   }
 }
 

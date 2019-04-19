@@ -17,11 +17,7 @@ import {
 })
 export class EventManagementComponent implements OnInit {
 
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
-  events: NgoEvent[] = [];
-  isLoading = false;
-  private eventsSub: Subscription;
+  eventslist: NgoEvent[] = [];
 
   displayedColumns: string[] = [
     "event", "ctgy", "desc", "status", "location",
@@ -35,36 +31,24 @@ export class EventManagementComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public dialog: MatDialog,
     private eventsService: EventService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    /**
-     * Initially Getting the list of Events from database
-     */
-    this.isLoading = true;
-    this.eventsService.getEvents();
-    this.eventsSub = this.eventsService.getEventUpdateListener()
-      .subscribe((events: NgoEvent[]) => {
-        this.isLoading = false;
-        this.events = events;
-        // Assign the data to the data source for the table to render (Angular Material)
-        this.dataSource = new MatTableDataSource(this.events);
-        /**
-         * Code for pagination and sorting (from Angular Material)
-         */
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
-
+    this.findEventList();
   }
 
-  onAddNewEvent(): void {
-    this.eventsService.setModuleHeader("Create New Event");
-    this.router.navigate(['/admin/create-event']);
+
+  findEventList(): void {
+    this.eventsService.getEventList().subscribe(data => this.eventslist = data);
   }
+
+
+  // onAddNewEvent(): void {
+  //   this.eventsService.setModuleHeader("Create New Event");
+  //   this.router.navigate(['/admin/create-event']);
+  // }
 
   /**
    * PopUp form for Editing New Event (EDIT EVENT)

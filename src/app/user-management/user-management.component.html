@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users; index as i; let o=odd; let e=even;"
+    <tr *ngFor="let user of userslist; index as i; let o=odd; let e=even;"
       [ngClass]="{odd: o, even: e}">
       <td>{{i+1}}</td>
       <td>{{user.firstname}}</td>

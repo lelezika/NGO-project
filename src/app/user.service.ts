@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -13,9 +13,11 @@ import { Router } from '@angular/router';
 export class UserService {
   public users: User[] = [];
   private url = '/assets/mock-users.json';
-  // private usersUpdated = new Subject<User[]>();
   private headerSource = new BehaviorSubject<string>(null);
   moduleHeader = this.headerSource.asObservable();
+  private httpOptions = {
+    headers: new HttpHeaders({'content-Type': 'application/json'})
+  };
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -31,18 +33,22 @@ export class UserService {
     //alert('deleting user ' + email);
     return this.httpClient.delete(`${this.url}/users/${email}`);
   }
-  public getUsers(url?: string): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.url)
-      .pipe(
-        //   catchError(this.handleError<Event[]>('getEvents', []))
-      );
+  public getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url, this.httpOptions)
   }
 
   // Getting single User
-  getUserbyid(email: string) {
-    return this.httpClient
-      .get<User>('http://localhost:4000/api/users/' + email);
-  }
+  getOneUser(email: string): Observable<User> {
+    const params = new HttpParams({
+      fromString: 'email=' + email
+    });
+    const findhttpOptions = {
+      headers: new HttpHeaders({'content-Type': 'application/json'}),
+      params: params
+    };
+    return this.httpClient.get<User>(this.url, findhttpOptions)
+      .pipe(catchError(this.handleError<User>('getOneUser email' + email)));
+    }
 
   // getUserUpdateListener() {
   //   return this.usersUpdated.asObservable();

@@ -1,37 +1,48 @@
 <div>
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Company (disabled)" disabled value="Google">
-  </mat-form-field>
-
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="First name">
+      <input  matInput placeholder="eventName" formControlName="eventName">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="Long Last Name That Will Be Truncated">
+      <input matInput placeholder="category" formControlName="category">
     </mat-form-field></td>
-  </tr></table>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="status" formControlName="status">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="location" formControlName="location">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="description" formControlName="description">
+      </mat-form-field></td>
+  </tr>
+</table>
   <p>
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+      <input type="date" matInput placeholder="startDate" formControlName="startDate">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Address 2"></textarea>
+        <input type="date" matInput placeholder="endDate" formControlName="endDate">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="time" matInput placeholder="startTime" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input type="time" matInput placeholder="endTime" formControlName="endTime">
     </mat-form-field>
   </p>
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="City">
+      <input type="number" matInput placeholder="adultTicketPrice" formControlName="adultTicketPrice">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
-      <input matInput placeholder="State">
+        <input type="number" matInput placeholder="childTicketPrice" formControlName="childTicketPrice">
     </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
+    <!-- <td><mat-form-field class="example-full-width">
+      <input type="file" placeholder="image" formControlName="image">
+    </mat-form-field></td> -->
   </tr></table>
-  <button mat-button (click)="onSubmit()" type="submit">Summit</button>
+  <button type="submit" [disabled]="!eventForm.valid">Submit</button>
 </form>
 </div>

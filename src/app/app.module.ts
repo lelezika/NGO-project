@@ -58,7 +58,8 @@ import { EventService } from './event.service';
     NavBarComponent,
     MatPaginator,
     MatTooltip,
-    UserViewComponent
+    UserViewComponent,
+    MatTooltip
   ],
   imports: [
     AppRoutingModule,
