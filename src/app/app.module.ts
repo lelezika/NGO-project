@@ -40,6 +40,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventService } from './event.service';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EventService } from './event.service';
     UserViewComponent,
     NavBarComponent,
     MatPaginator,
-    MatTooltip
+    MatTooltip,
+    LoginFormComponent
   ],
   imports: [
     AppRoutingModule,
