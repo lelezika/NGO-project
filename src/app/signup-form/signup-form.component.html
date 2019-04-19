@@ -1,4 +1,4 @@
-<div class="form-container">
+<mat-card class="form-container">
   <form [formGroup]="signupForm" (submit)="onSubmit()">
     <mat-form-field>
       <input matInput type="text" placeholder="first name" formControlName="firstName" />
@@ -24,4 +24,4 @@
       <button mat-button type="submit">Sign Up</button>
     </mat-dialog-actions>
   </form>
-</div>
+</mat-card>

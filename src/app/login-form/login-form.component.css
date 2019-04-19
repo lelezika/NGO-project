@@ -1,4 +1,12 @@
+mat-card.form-container {
+  flex: 1;
+  width: 30%;
+  margin: auto;
+  margin-top: 5%;
+}
+
 .form-container form {
   display: flex;
   flex-direction: column;
 }
+
