@@ -72,8 +72,8 @@ export class EventCreateComponent implements OnInit {
     this.eventData.childTicketPrice = this.eventForm.get("childTicketPrice").value
     this.eventData.imagePath = this.eventForm.get("imageurl").value
     this.eventservice.addEvent(this.eventData)
-    // this.eventservice.addEvent(this.eventData).subscribe(event => this.heroes.push(event));
-    // this.router.navigate(["/admin/event-management"]);
+    this.eventservice.addEvent(this.eventData).subscribe(event => this.heroes.push(event));
+    this.router.navigate(["/admin/event-management"]);
     console.log(this.eventData)
     
   }

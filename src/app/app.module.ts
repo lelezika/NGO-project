@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,8 +42,16 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UserService } from './user.service';
 import { EventService } from './event.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+<<<<<<< HEAD
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { UserService } from './user.service';
+import { AdminAuthGuard } from './auth/admin-auth.guard';
+=======
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { UserViewEventComponent } from './user-view-event/user-view-event.component';
+>>>>>>> refs/remotes/origin/master
 
 @NgModule({
   declarations: [
@@ -61,9 +69,14 @@ import { UserViewEventComponent } from './user-view-event/user-view-event.compon
     NavBarComponent,
     MatPaginator,
     MatTooltip,
+<<<<<<< HEAD
+    LoginComponent,
+    SignupComponent
+=======
     LoginFormComponent,
     SignupFormComponent,
     UserViewEventComponent
+>>>>>>> refs/remotes/origin/master
   ],
   imports: [
     AppRoutingModule,
@@ -88,12 +101,19 @@ import { UserViewEventComponent } from './user-view-event/user-view-event.compon
     MatStepperModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    
   ],
   entryComponents: [
     EventRegistrationFormComponent
   ],
+<<<<<<< HEAD
+  providers: [EventService,AdminAuthGuard,UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
+=======
   providers: [EventService, UserService],
+>>>>>>> refs/remotes/origin/master
   bootstrap: [AppComponent]
 })
 export class AppModule {}

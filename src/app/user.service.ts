@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
+import {HttpClient} from '@angular/common/http';
+
+
+=======
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
@@ -6,11 +11,65 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { User } from './user';
 import { Router } from '@angular/router';
+>>>>>>> refs/remotes/origin/master
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+<<<<<<< HEAD
+  constructor(private http:HttpClient) { }
+
+  nUser:User;
+  eUser:User;
+  dUser:User;
+
+  //Get all the Users
+  getUsers()
+  {
+    return this.http.get("http://localhost:4000/api/user");
+  }
+
+  //Post a new User
+  postUser(newUser:User)
+  {
+    this.nUser=newUser;
+    return this.http.post("http://localhost:4000/api/user",this.nUser);
+  }
+
+  //Get a single User by email before update or delete
+  getForEdit(suppliedEmail:string)
+  {
+   return this.http.get("http://localhost:4000/api/user/"+suppliedEmail);
+  }
+
+  //Edit the user
+  postForEdit(editUser:User)
+  {
+    this.eUser=editUser;
+    console.log("Going to save the edited content");
+    console.log(this.eUser);
+    return this.http.put("http://localhost:4000/api/user/"+this.eUser.email,this.eUser);
+  }
+
+  deleteUser(suppliedEmail:string)
+  {
+    console.log("Going to delete");
+    console.log(suppliedEmail);
+   return this.http.delete("http://localhost:4000/api/user/"+suppliedEmail);
+  }
+
+}
+
+
+export class User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  role: string;
+}
+=======
   public users: User[] = [];
   private url = '/assets/mock-users.json';
   private headerSource = new BehaviorSubject<string>(null);
@@ -68,3 +127,4 @@ export class UserService {
   //   this.prevPage =  linkHeader["prev"];
   //   this.nextPage =  linkHeader["next"];
 }
+>>>>>>> refs/remotes/origin/master
