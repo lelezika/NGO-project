@@ -63,7 +63,7 @@ export class EventService {
     }
 
   addEvent(event: NgoEvent): Observable<NgoEvent> {
-    return this.http.post<NgoEvent>(this.eventurl, event, this.httpOptions)
+    return this.http.post<NgoEvent>('http://localhost:4000/api/events', event, this.httpOptions)
       .pipe(catchError(this.handleError<NgoEvent>('addEvent')));
   }
 
