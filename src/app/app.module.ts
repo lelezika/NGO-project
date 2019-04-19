@@ -39,19 +39,13 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { UserService } from './user.service';
 import { EventService } from './event.service';
 import { LoginFormComponent } from './login-form/login-form.component';
-<<<<<<< HEAD
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { UserService } from './user.service';
 import { AdminAuthGuard } from './auth/admin-auth.guard';
-=======
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { UserViewEventComponent } from './user-view-event/user-view-event.component';
->>>>>>> refs/remotes/origin/master
 
 @NgModule({
   declarations: [
@@ -69,14 +63,8 @@ import { UserViewEventComponent } from './user-view-event/user-view-event.compon
     NavBarComponent,
     MatPaginator,
     MatTooltip,
-<<<<<<< HEAD
     LoginComponent,
     SignupComponent
-=======
-    LoginFormComponent,
-    SignupFormComponent,
-    UserViewEventComponent
->>>>>>> refs/remotes/origin/master
   ],
   imports: [
     AppRoutingModule,
@@ -107,13 +95,9 @@ import { UserViewEventComponent } from './user-view-event/user-view-event.compon
   entryComponents: [
     EventRegistrationFormComponent
   ],
-<<<<<<< HEAD
   providers: [EventService,AdminAuthGuard,UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
-=======
-  providers: [EventService, UserService],
->>>>>>> refs/remotes/origin/master
   bootstrap: [AppComponent]
 })
 export class AppModule {}
