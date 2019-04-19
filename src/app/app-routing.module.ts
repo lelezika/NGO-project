@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/eventlist', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'edit-event/:eventId', component: EventCreateComponent}
   ]},
   { path: 'login', component: LoginFormComponent },
+  { path: 'signup', component: SignupFormComponent },
   { path: 'eventlist', component: EventListComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
