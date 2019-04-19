@@ -25,11 +25,11 @@ export class EventService {
   getEventList(): Observable<Event[]> {
     return this.http.get<Event[]>(this.url)
       .pipe(
-        catchError(this.handleError<Event[]>('getEvents', []))
+        catchError(this.handleError<Event[]>('getEventList', []))
       );
   }
 
-  getOneEvent(id: number): Observable<Event> {
+  getOneEvent(id: string): Observable<Event> {
     const params = new HttpParams({
       fromString: 'id=' + id
     });
@@ -38,12 +38,16 @@ export class EventService {
       params: params
     };
     return this.http.get<Event>(this.url, findhttpOptions)
-      .pipe(catchError(this.handleError<Event>('getOneEvent id' + id)));
+      .pipe(
+        catchError(this.handleError<Event>('getOneEvent', null))
+      );
   }
 
   addEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(this.url, event, this.httpOptions)
-      .pipe(catchError(this.handleError<Event>('addEvent')));
+      .pipe(
+        catchError(this.handleError<Event>('addEvent', undefined))
+      );
   }
 
   updateEvent(event: Event): Observable<any> {

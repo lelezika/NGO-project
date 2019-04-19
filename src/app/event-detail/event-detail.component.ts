@@ -38,29 +38,10 @@ export class EventDetailComponent implements OnInit {
 
   getEvent() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.eventService.getEventList()
-      .pipe(
-        map((events: Event[]): Event[] => {
-          const result = [];
-          for (const event of events) {
-            if (event.id === id) {
-              const newEvent = event;
-              result.push(newEvent);
-            }
-          }
-          return result;
-        }))
-      .subscribe((events: Event[]): void => {
-        if (events.length === 0) {
-          console.error(`Event ${id} Not Found`);
-          this.router.navigate(['/page-not-found']);
-        } else {
-          if (events.length > 1) {
-            console.error(`Multiple Events With ID ${id}`);
-          }
-          this.selectedEvent = events[0];
-        }
-      });
+    this.eventService.getOneEvent(id)
+      .subscribe(
+        data => this.selectedEvent = data
+      );
   }
 
   displayForm() {
