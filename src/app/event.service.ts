@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class EventService {
   private events: Event[] = [];
-  private eventurl = '/assets/mock-events.json';
+  //  private url = '/assets/mock-events.json';
+  private url = 'http://localhost:4000/api/events';
   private httpOptions = {
     headers: new HttpHeaders({'content-Type': 'application/json'})
   };
@@ -21,15 +22,11 @@ export class EventService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.eventurl)
+  getEventList(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.url)
       .pipe(
         catchError(this.handleError<Event[]>('getEvents', []))
       );
-  }
-
-  getEventList(): Observable<Event[]> {
-    return this.http.get<Event[]>('http://localhost:4000/api/events')
   }
 
   getOneEvent(id: number): Observable<Event> {
@@ -40,27 +37,24 @@ export class EventService {
       headers: new HttpHeaders({'content-Type': 'application/json'}),
       params: params
     };
-    return this.http.get<Event>(this.eventurl, findhttpOptions)
+    return this.http.get<Event>(this.url, findhttpOptions)
       .pipe(catchError(this.handleError<Event>('getOneEvent id' + id)));
   }
 
   addEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>('http://localhost:4000/api/events', event, this.httpOptions)
+    return this.http.post<Event>(this.url, event, this.httpOptions)
       .pipe(catchError(this.handleError<Event>('addEvent')));
   }
 
   updateEvent(event: Event): Observable<any> {
-    return this.http.put(this.eventurl, event, this.httpOptions)
+    return this.http.put(this.url, event, this.httpOptions)
       .pipe(catchError(this.handleError('updateEvent id=' + event.id)));
   }
   
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
- 
       console.error(error); 
- 
       console.log(`${operation} failed: ${error.message}`);
- 
       return of(result as T);
     };
   }

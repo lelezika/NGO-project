@@ -38,7 +38,7 @@ export class EventDetailComponent implements OnInit {
 
   getEvent() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.eventService.getEvents()
+    this.eventService.getEventList()
       .pipe(
         map((events: Event[]): Event[] => {
           const result = [];

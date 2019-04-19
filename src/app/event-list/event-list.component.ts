@@ -20,7 +20,7 @@ export class EventListComponent implements OnInit {
    ) { }
 
   ngOnInit() {
-    this.eventService.getEvents()
+    this.eventService.getEventList()
       .subscribe(
         data => this.events = data
       );
