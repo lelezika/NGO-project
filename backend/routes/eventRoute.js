@@ -100,10 +100,9 @@ router.put(
 //Get all Events
 router.get("", (req, res, next) => {
   Event.find().then(documents => {
-    res.status(200).json({
-      message: "Events fetched successfully!",
-      events: documents
-    });
+    res.status(200).json(
+      documents
+    );
   });
 });
 

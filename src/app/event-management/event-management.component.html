@@ -13,11 +13,11 @@
   <tbody>
     <tr *ngFor="let event of eventslist; index as i; let o=odd; let e=even;"
       [ngClass]="{odd: o, even: e}">
-      <td>{{event.name}}</td>
+      <td>{{event.eventName}}</td>
       <td>{{event.category}}</td>
       <td>{{event.location}}</td>
-      <td>{{event.startdate}}</td>
-      <td>{{event.enddate}}</td>
+      <td>{{event.startDate}}</td>
+      <td>{{event.endDate}}</td>
       <a routerLink="edit-event/:eventId" [queryParams]="{id:1}">Edit</a>
       
     </tr>
