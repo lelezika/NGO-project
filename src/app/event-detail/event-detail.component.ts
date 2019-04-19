@@ -23,7 +23,7 @@ export class EventDetailComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.selectedEvent = {id: 1, name: 'Event 1',
+    this.selectedEvent = {id: '1', name: 'Event 1',
       description: 'This is an event', category: 0,
       startDate: null,
       endDate: null,
@@ -38,7 +38,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   getEvent() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.eventService.getEvents()
       .pipe(
         map((events: Event[]): Event[] => {
