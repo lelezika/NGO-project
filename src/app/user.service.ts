@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  updateUser(arg0: import("./user").User) {
+    throw new Error("Method not implemented.");
+  }
   constructor(private http:HttpClient) { }
 
   nUser:User;

@@ -36,7 +36,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   findUserList(): void {
-    this.userService.getUsers().subscribe(data => this.userslist = data);
+    this.userService.getUsers().subscribe((data:User[]) => this.userslist = data);
   }
 
   public userDelete(i: any) {
