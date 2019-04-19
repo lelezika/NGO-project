@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EventService, NgoEvent } from '../event.service';
 import { ParamMap } from '@angular/router';
+import { EventCategory } from '../event';
 
 @Component({
   selector: 'app-event-create',
@@ -9,6 +10,10 @@ import { ParamMap } from '@angular/router';
   styleUrls: ['./event-create.component.css']
 })
 export class EventCreateComponent implements OnInit {
+
+  categories = Object.keys(EventCategory)
+    .filter(k => typeof EventCategory[k as any] === 'number');
+  EventCategory = EventCategory;
 
   eventData:NgoEvent;
   eventForm = new FormGroup({
@@ -33,7 +38,7 @@ export class EventCreateComponent implements OnInit {
     
   }
 
-  
+
 
 
   //   onImagePicked(event: Event) {
@@ -62,7 +67,7 @@ export class EventCreateComponent implements OnInit {
     this.eventData.adultTicketPrice = this.eventForm.get("adultTicketPrice").value
     this.eventData.childTicketPrice = this.eventForm.get("childTicketPrice").value
     
-    console.log(this.eventForm.value)
+ 
   }
 
 }
