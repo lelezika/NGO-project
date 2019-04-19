@@ -10,7 +10,6 @@ const router = express.Router();
 router.post(
   "",
   checkAuth,
-
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
     const event = new Event({
@@ -43,8 +42,6 @@ router.post(
 router.put(
   '/:id',
   checkAuth,
-  (req,res,next) => {
-    let imagePath = req.body.imagePath;
     if(req.file){
       const url = req.protocol + "://" + req.get("host");
     }
