@@ -6,7 +6,7 @@
     "endDate": "04/01/2019", "endTime": "5:00 PM",
     "location": "South Plainfield, NJ",
     "status": "Active", "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
   {
     "id": "2", "eventName": "Event 2", "category": "Conference",
@@ -15,7 +15,7 @@
     "endDate": "04/02/2019", "endTime": "5:00 PM",
     "location": "South Brunswick, NJ",
     "status": "Inactive", "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
   {
     "id": "3", "eventName": "Event 3", "category": "Presentation",
@@ -24,7 +24,7 @@
     "endDate": "04/03/2019", "endTime": "5:00 PM",
     "location": "South Orange, NJ",
     "status": "Active", "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
   {
     "id": "4", "eventName": "Event 4", "category": "Presentation",
@@ -33,7 +33,7 @@
     "endDate": "04/04/2019", "endTime": "5:00 PM",
     "location": "South Hackensack, NJ",
     "status": "Active", "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
   {
     "id": "5", "eventName": "Event 5", "category": "Conference",
@@ -42,6 +42,6 @@
     "endDate": "04/05/2019", "endTime": "5:00 PM",
     "location": "South Toms River, NJ",
     "status": "Active", "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   }
 ]

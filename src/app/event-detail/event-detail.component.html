@@ -1,21 +1,23 @@
 <div class="event-container">
   <mat-card class="event-detail">
     <mat-card-header>
-      <mat-card-title>{{ selectedEvent.name }}</mat-card-title>
+      <mat-card-title>{{ selectedEvent.eventName }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p class="category-text">Category: {{ EventCategory[selectedEvent.category] }}</p>
+      <p class="category-text">Category: {{ selectedEvent.category }}</p>
       <p class="location-text">Location: {{ selectedEvent.location }}</p>
-      <p class="startdate-text">Starting time: {{ selectedEvent.startDate }}</p>
-      <p class="enddate-text">Ending time: {{ selectedEvent.endDate }}</p>
+      <p class="startdate-text">Starting date: {{ selectedEvent.startDate }}</p>
+      <p class="startdate-text">Starting time: {{ selectedEvent.startTime }}</p>
+      <p class="enddate-text">Ending date: {{ selectedEvent.endDate }}</p>
+      <p class="enddate-text">Ending time: {{ selectedEvent.endTime }}</p>
       <h2 class="price-header">Prices:</h2>
       <ul>
-        <li class="adult-price">Adult Price: ${{ selectedEvent.adultPrice }}</li>
-        <li class="child-price">Child Price: ${{ selectedEvent.childPrice }}</li>
+        <li class="adult-price">Adult Price: ${{ selectedEvent.adultTicketPrice }}</li>
+        <li class="child-price">Child Price: ${{ selectedEvent.childTicketPrice }}</li>
       </ul>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button *ngIf="selectedEvent.allowRegistration"
+      <button mat-button *ngIf="selectedEvent.status === 'Active'"
         (click)="displayForm()">Register</button>
       <button mat-button (click)="return()">Back To Events</button>
     </mat-card-actions>

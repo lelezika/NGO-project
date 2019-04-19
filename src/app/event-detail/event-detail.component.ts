@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../event.service';
-import { Event, EventCategory } from '../event';
+import { Event, EVENT_CATEGORIES } from '../event';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -14,7 +14,6 @@ import { EventRegistrationFormComponent } from '../event-registration-form/event
 })
 export class EventDetailComponent implements OnInit {
 
-  public EventCategory = EventCategory;
   selectedEvent: Event;
 
   constructor(
@@ -23,13 +22,13 @@ export class EventDetailComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.selectedEvent = {id: '1', name: 'Event 1',
-      description: 'This is an event', category: 0,
-      startDate: null,
-      endDate: null,
-      location: 'South Plainfield, NJ',
-      allowRegistration: true, imagePath: null,
-      adultPrice: 2.99, childPrice: 1.99
+    this.selectedEvent = {id: '1', eventName: 'Event 1',
+      description: 'This is an event', category: 'Presentation',
+      startDate: '', startTime: '',
+      endDate: '', endTime: '',
+      location: 'nowhere',
+      status: 'Active', imagePath: null,
+      adultTicketPrice: 2.99, childTicketPrice: 1.99
     };
   }
 
@@ -46,8 +45,6 @@ export class EventDetailComponent implements OnInit {
           for (const event of events) {
             if (event.id === id) {
               const newEvent = event;
-              newEvent.startDate = new Date(event.startDate);
-              newEvent.endDate = new Date(event.endDate);
               result.push(newEvent);
             }
           }
