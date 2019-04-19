@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserViewEventComponent } from './user-view-event/user-view-event.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], children: [
     {path: 'user-management', component: UserManagementComponent},
+    {path: 'user-create', component: UserCreateComponent},
     {path: 'event-management', component: EventManagementComponent},
     {path: 'create-event', component: EventCreateComponent},
     { path: 'eventlist', component: UserViewComponent },

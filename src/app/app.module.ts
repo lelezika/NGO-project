@@ -42,7 +42,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserManagementComponent } from './user-management/user-management.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserViewEventComponent } from './user-view-event/user-view-event.component';
 import { UserService } from './user.service';
@@ -62,7 +62,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     MatTooltip,
     NavBarComponent,
     PageNotFoundComponent,
-    UserDetailsComponent,
+    UserCreateComponent,
     UserManagementComponent,
     UserViewComponent,
     UserViewEventComponent,
