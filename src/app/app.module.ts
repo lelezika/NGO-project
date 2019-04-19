@@ -42,6 +42,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventService } from './event.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { UserViewEventComponent } from './user-view-event/user-view-event.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     MatPaginator,
     MatTooltip,
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    UserViewEventComponent
   ],
   imports: [
     AppRoutingModule,

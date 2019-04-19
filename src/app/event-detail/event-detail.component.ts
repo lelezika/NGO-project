@@ -73,7 +73,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   return() {
-  this.router.navigate(['eventlist']);
+  this.router.navigate(['../../eventlist'], {relativeTo: this.route});
   }
 
 }

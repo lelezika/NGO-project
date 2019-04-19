@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   headerFlag = false;
 
   mobileQuery: MediaQueryList;
-  fillerNav: string[] = ['User Management', 'Event Management', 'User View'];
+  fillerNav: string[] = ['User Management', 'Event Management', 'Event List'];
 
   private _mobileQueryListener: () => void;
 
