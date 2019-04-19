@@ -1,53 +1,3 @@
-<!-- <div>
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="example-form">
-  <mat-form-field class="example-full-width">
-    <input  matInput placeholder="eventName" formControlName="eventName">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>category</mat-label>
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categories" [value]="EventCategory[category]">
-        {{category}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="status" formControlName="status">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="location" formControlName="location">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="description" formControlName="description">
-  </mat-form-field>
-  <div class="filler-1"></div>
-  <mat-form-field class="example-full-width">
-    <input type="date" matInput placeholder="startDate" formControlName="startDate">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="date" matInput placeholder="endDate" formControlName="endDate">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="time" matInput placeholder="startTime" formControlName="startTime">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="time" matInput placeholder="endTime" formControlName="endTime">
-  </mat-form-field>
-  <div class="filler-2"></div>
-  <mat-form-field class="example-full-width">
-    <input type="number" matInput placeholder="adultTicketPrice" formControlName="adultTicketPrice">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="number" matInput placeholder="childTicketPrice" formControlName="childTicketPrice">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="url" matInput placeholder="image url" formControlName="imageurl">
-  </mat-form-field>
-  <button type="submit" [disabled]="!eventForm.valid">Submit</button>
-</form>
-</div> -->
-
-
 <mat-card>
     <mat-card-content>
   <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="example-form">
@@ -58,13 +8,18 @@
   <mat-form-field>
     <mat-label>category</mat-label>
     <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categories" [value]="EventCategory[category]">
+      <mat-option *ngFor="let category of categories" [value]="category">
         {{category}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field >
-    <input matInput placeholder="status" formControlName="status">
+  <mat-form-field>
+    <mat-label>category</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">
+        {{status}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field >
     <input matInput placeholder="location" formControlName="location">

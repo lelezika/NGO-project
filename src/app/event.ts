@@ -1,19 +1,23 @@
-export enum EventCategory {
-  Conference = 0,
-  Seminar,
-  Presentation,
-}
+export const EVENT_CATEGORIES = [
+  "Conference", "Seminar", "Presentation"
+];
+
+export const EVENT_STATUSES = [
+  "Active", "Inactive"
+];
 
 export class Event {
-  id: number;
-  name: string;
+  id: string;
+  eventName: string;
   description: string;
-  category: EventCategory;
-  startDate: Date;
-  endDate: Date;
+  category: string;
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
   location: string;
-  allowRegistration: boolean;
+  status: string;
   imagePath: string;
-  adultPrice: number;
-  childPrice: number;
+  adultTicketPrice: number;
+  childTicketPrice: number;
 }

@@ -1,37 +1,47 @@
 [
-  {"id": 1, "name": "Event 1", "description": "This is an event", "category": 1,
-    "startDate": "2019-04-01T16:00:00.000Z",
-    "endDate": "2019-04-01T17:00:00.000Z",
+  {
+    "id": "1", "eventName": "Event 1", "category": "Seminar",
+    "description": "This is an event",
+    "startDate": "04/01/2019", "startTime": "4:00 PM",
+    "endDate": "04/01/2019", "endTime": "5:00 PM",
     "location": "South Plainfield, NJ",
-    "allowRegistration": true, "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "status": "Active", "imagePath": null,
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
-  {"id": 2, "name": "Event 2", "description": "This is another event", "category": 0,
-    "startDate": "2019-04-02T16:00:00.000Z",
-    "endDate": "2019-04-02T17:00:00.000Z",
+  {
+    "id": "2", "eventName": "Event 2", "category": "Conference",
+    "description": "This is another event",
+    "startDate": "04/02/2019", "startTime": "4:00 PM",
+    "endDate": "04/02/2019", "endTime": "5:00 PM",
     "location": "South Brunswick, NJ",
-    "allowRegistration": false, "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "status": "Inactive", "imagePath": null,
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
-  {"id": 3, "name": "Event 3", "description": "This is yet another event", "category": 2,
-    "startDate": "2019-04-03T16:00:00.000Z",
-    "endDate": "2019-04-03T17:00:00.000Z",
+  {
+    "id": "3", "eventName": "Event 3", "category": "Presentation",
+    "description": "This is yet another event",
+    "startDate": "04/03/2019", "startTime": "4:00 PM",
+    "endDate": "04/03/2019", "endTime": "5:00 PM",
     "location": "South Orange, NJ",
-    "allowRegistration": true, "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "status": "Active", "imagePath": null,
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
-  {"id": 4, "name": "Event 4", "description": "This is some event", "category": 2,
-    "startDate": "2019-04-04T16:00:00.000Z",
-    "endDate": "2019-04-04T17:00:00.000Z",
+  {
+    "id": "4", "eventName": "Event 4", "category": "Presentation",
+    "description": "This is some event",
+    "startDate": "04/04/2019", "startTime": "4:00 PM",
+    "endDate": "04/04/2019", "endTime": "5:00 PM",
     "location": "South Hackensack, NJ",
-    "allowRegistration": true, "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "status": "Active", "imagePath": null,
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   },
-  {"id": 5, "name": "Event 5", "description": "This is some other event", "category": 0,
-    "startDate": "2019-04-05T16:00:00.000Z",
-    "endDate": "2019-04-05T17:00:00.000Z",
+  {
+    "id": "5", "eventName": "Event 5", "category": "Conference",
+    "description": "This is some other event",
+    "startDate": "04/05/2019", "startTime": "4:00 PM",
+    "endDate": "04/05/2019", "endTime": "5:00 PM",
     "location": "South Toms River, NJ",
-    "allowRegistration": true, "imagePath": null,
-    "adultPrice": 2.99, "childPrice": 1.99
+    "status": "Active", "imagePath": null,
+    "adultTicketPrice": 2.99, "childTicketPrice": 1.99
   }
 ]

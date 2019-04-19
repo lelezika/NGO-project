@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { EventService,NgoEvent } from '../event.service';
+import { EventService } from '../event.service';
 import { Router } from '@angular/router';
+import { Event } from '../event';
 import {
   MatPaginator,
   MatSort,
@@ -16,7 +17,7 @@ import {
 })
 export class EventManagementComponent implements OnInit {
 
-  eventslist: NgoEvent[] = [];
+  eventslist: Event[] = [];
 
   displayedColumns: string[] = [
     "event", "ctgy", "desc", "status", "location",
@@ -24,7 +25,7 @@ export class EventManagementComponent implements OnInit {
     "adltTktPrice", "chldTktPrice",
     "img", "action"
   ];
-  dataSource: MatTableDataSource<NgoEvent>;
+  dataSource: MatTableDataSource<Event>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -40,7 +41,9 @@ export class EventManagementComponent implements OnInit {
 
 
   findEventList(): void {
-    this.eventsService.getEventList().subscribe(data => this.eventslist = data);
+    this.eventsService.getEventList().subscribe(
+      data => this.eventslist = data
+    );
   }
 
 
