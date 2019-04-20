@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { Event } from '../event';
+import { NgoEvent } from '../event';
 
 @Component({
   selector: 'app-event-registration-form',
@@ -11,7 +11,7 @@ import { Event } from '../event';
 })
 export class EventRegistrationFormComponent implements OnInit {
 
-  event: Event;
+  event: NgoEvent;
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
