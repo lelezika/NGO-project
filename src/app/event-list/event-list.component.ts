@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../event.service';
-import { Event } from '../event';
+import { NgoEvent } from '../event';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EventListComponent implements OnInit {
 
-  events: Event[];
+  events: NgoEvent[];
 
   constructor(
     private eventService: EventService,

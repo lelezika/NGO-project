@@ -4,14 +4,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { Event } from './event';
+import { NgoEvent } from './event';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private events: Event[] = [];
+  private events: NgoEvent[] = [];
   //  private url = '/assets/mock-events.json';
   private url = 'http://localhost:4000/api/events';
   private httpOptions = {
@@ -22,46 +22,46 @@ export class EventService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getEventList(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.url)
+  getEventList(): Observable<NgoEvent[]> {
+    return this.http.get<NgoEvent[]>(this.url)
       .pipe(
-        map((events: any[]) => {
-          for (event of events) {
-            event.id = event._id;
-            delete event._id;
+        map((data: any[]) => {
+          for (const item of data) {
+            item.id = item._id;
+            delete item._id;
           }
-          return events;
+          return data;
         }),
-        catchError(this.handleError<Event[]>('getEventList', []))
+        catchError(this.handleError<NgoEvent[]>('getEventList', []))
       );
   }
 
-  getOneEvent(id: string): Observable<Event> {
-    return this.http.get<Event[]>(this.url)
+  getOneEvent(id: string): Observable<NgoEvent> {
+    return this.http.get<NgoEvent[]>(this.url)
       .pipe(
-        map(events => {
+        map((data: any[]) => {
           const matches = [];
-          for (event of events) {
-            if (event._id === id) {
-              event.id = event._id;
-              delete event._id;
-              matches.push(event);
+          for (var item of data) {
+            if (item._id === id) {
+              item.id = item._id;
+              delete item._id;
+              matches.push(item);
             }
           }
           return matches[0];
         }),
-        catchError(this.handleError<Event[]>('getEventList', null))
+        catchError(this.handleError<NgoEvent[]>('getEventList', null))
       );
   }
 
-  addEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(this.url, event, this.httpOptions)
+  addEvent(event: NgoEvent): Observable<NgoEvent> {
+    return this.http.post<NgoEvent>(this.url, event, this.httpOptions)
       .pipe(
-        catchError(this.handleError<Event>('addEvent', undefined))
+        catchError(this.handleError<NgoEvent>('addEvent', undefined))
       );
   }
 
-  updateEvent(event: Event): Observable<any> {
+  updateEvent(event: NgoEvent): Observable<any> {
     return this.http.put(this.url+"/"+event.id, event, this.httpOptions)
       .pipe(catchError(this.handleError('updateEvent', event)));
   }

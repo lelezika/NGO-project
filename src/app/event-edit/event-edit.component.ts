@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { EventService } from '../event.service';
-import { Event, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
+import { NgoEvent, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
 
 @Component({
   selector: 'app-event-edit',
@@ -18,7 +18,7 @@ export class EventEditComponent implements OnInit {
   categories = EVENT_CATEGORIES;
   statuses = EVENT_STATUSES;
 
-  selectedEvent: Event = null;
+  selectedEvent: NgoEvent = null;
   eventForm = new FormGroup({
     eventName: new FormControl(null),
     category: new FormControl(null),
@@ -61,7 +61,7 @@ export class EventEditComponent implements OnInit {
 				return of(this.selectedEvent);
 			}))
       .subscribe(() => {
-        this.router.navigate(['../../'], {relativeTo: this.route});
+        this.router.navigate(['../../event-management'], {relativeTo: this.route});
       });
   }
 

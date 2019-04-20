@@ -6,7 +6,7 @@ export const EVENT_STATUSES = [
   "Active", "Inactive"
 ];
 
-export class Event {
+export class NgoEvent {
   id: string;
   eventName: string;
   description: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../event.service';
-import { Event, EVENT_CATEGORIES } from '../event';
+import { NgoEvent, EVENT_CATEGORIES } from '../event';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -14,7 +14,7 @@ import { EventRegistrationFormComponent } from '../event-registration-form/event
 })
 export class EventDetailComponent implements OnInit {
 
-  selectedEvent: Event;
+  selectedEvent: NgoEvent;
 
   constructor(
     private eventService: EventService,

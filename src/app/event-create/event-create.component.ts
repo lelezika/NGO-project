@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventService } from '../event.service';
 import { ParamMap, Router } from '@angular/router';
-import { Event, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
+import { NgoEvent, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
 import { mimeType } from './mime-type.validator';
 
 @Component({
@@ -16,7 +16,7 @@ export class EventCreateComponent implements OnInit {
   categories = EVENT_CATEGORIES;
   statuses = EVENT_STATUSES;
 
-  eventData = new Event();
+  eventData = new NgoEvent();
   eventForm = new FormGroup({
     eventName: new FormControl(null),
     category: new FormControl(null),
