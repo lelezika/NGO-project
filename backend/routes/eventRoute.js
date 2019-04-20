@@ -8,7 +8,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, 'images/upload');
+    cb(null, 'backend/images/upload');
   },
   filename: function(req, file, cb) {
     cb(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.substring(6));
@@ -51,11 +51,14 @@ router.post(
 
 /** UPDATE Event */
 router.put('/:id', checkAuth,
-  upload.any(),
+  upload.single('file'),
   (req, res, next) => {
     if(req.file){
-      const url = req.protocol + "://" + req.get("host");
+      req.body.imagePath = req.file.path;
+    } else {
+      req.body.imagePath = '';
     }
+    console.log(req.file);
     const eventData = {
       eventName: req.body.eventName,
       description: req.body.description,

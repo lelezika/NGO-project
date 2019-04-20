@@ -61,6 +61,12 @@ export class EventService {
     for (const key of Object.keys(event)) {
       formData.append(key, event[key]);
     }
+    formData.delete('file');
+    if (event['file']) {
+      formData.append('file', event['file'], event['file'].name);
+    } else {
+      formData.append('file', null);
+    }
     return this.http.put(this.url+"/"+event.id, formData)
       .pipe(catchError(this.handleError('updateEvent', event)));
   }

@@ -19,6 +19,7 @@ export class EventEditComponent implements OnInit {
   statuses = EVENT_STATUSES;
 
   selectedEvent: NgoEvent = null;
+	selectedFile: File;
   eventForm = new FormGroup({
     eventName: new FormControl(null),
     category: new FormControl(null),
@@ -31,7 +32,7 @@ export class EventEditComponent implements OnInit {
     endTime: new FormControl(null),
     adultTicketPrice: new FormControl(null),
     childTicketPrice: new FormControl(null),
-    imagePath: new FormControl(null)
+		imagePath: new FormControl(null),
   });
 
   constructor(
@@ -46,14 +47,19 @@ export class EventEditComponent implements OnInit {
       .subscribe(data => {
         // Make a deep copy of data
         this.selectedEvent = Object.assign({}, data);
-        // so that these delete statements do not affect this.selectedEvent
+        // so that the following statement does not affect this.selectedEvent
         delete data.id;
         this.eventForm.setValue(data);
       });
   }
 
+	onFileChanged(event) {
+	  this.selectedFile = event.target.files[0];
+	}
+
   onSubmit() {
     this.selectedEvent = Object.assign(this.selectedEvent, this.eventForm.value);
+		this.selectedEvent['file'] = this.selectedFile;
     this.eventService.updateEvent(this.selectedEvent)
 		  .pipe(
 			catchError((error) => {
@@ -64,5 +70,9 @@ export class EventEditComponent implements OnInit {
         this.router.navigate(['../../event-management'], {relativeTo: this.route});
       });
   }
+
+	onCancel() {
+	  this.router.navigate(['../../event-management'], {relativeTo: this.route});
+	}
 
 }
