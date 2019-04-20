@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventManagementComponent } from './event-management/event-management.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
     {path: 'create-event', component: EventCreateComponent},
     { path: 'eventlist', component: UserViewComponent },
     { path: 'events/:id', component: UserViewEventComponent },
-    {path: 'edit-event/:eventId', component: EventCreateComponent}
+    { path: 'edit-event/:id', component: EventEditComponent }
   ]},
   { path: 'eventlist', component: EventListComponent },
   { path: 'events/:id', component: EventDetailComponent },

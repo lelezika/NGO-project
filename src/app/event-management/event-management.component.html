@@ -18,8 +18,7 @@
       <td>{{event.location}}</td>
       <td>{{event.startDate}}</td>
       <td>{{event.endDate}}</td>
-      <a routerLink="edit-event/:eventId" [queryParams]="{id:1}">Edit</a>
-      
+      <a [routerLink]="['../edit-event',event.id]">Edit</a>
     </tr>
   </tbody>
 </table>

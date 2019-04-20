@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { Event } from './event';
 import { Router } from '@angular/router';
@@ -30,16 +30,18 @@ export class EventService {
   }
 
   getOneEvent(id: string): Observable<Event> {
-    const params = new HttpParams({
-      fromString: 'id=' + id
-    });
-    const findhttpOptions = {
-      headers: new HttpHeaders({'content-Type': 'application/json'}),
-      params: params
-    };
-    return this.http.get<Event>(this.url, findhttpOptions)
+    return this.http.get<Event[]>(this.url)
       .pipe(
-        catchError(this.handleError<Event>('getOneEvent', null))
+        map(events => {
+          const matches = [];
+          for (event of events) {
+            if (event.id === id) {
+              matches.push(event);
+            }
+          }
+          return matches[0];
+        }),
+        catchError(this.handleError<Event[]>('getEventList', null))
       );
   }
 
@@ -52,7 +54,7 @@ export class EventService {
 
   updateEvent(event: Event): Observable<any> {
     return this.http.put(this.url, event, this.httpOptions)
-      .pipe(catchError(this.handleError('updateEvent id=' + event.id)));
+      .pipe(catchError(this.handleError('updateEvent', event)));
   }
   
   private handleError<T>(operation = 'operation', result?: T) {
