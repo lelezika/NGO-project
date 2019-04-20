@@ -46,9 +46,10 @@
     <input type="number" matInput placeholder="child ticket price" formControlName="childTicketPrice">
   </mat-form-field>
   <mat-form-field >
-    <input type="url" matInput placeholder="image url path" formControlName="imagePath">
+    <mat-label>image url path</mat-label>
+    <input type="url" matInput readonly placeholder="image url path" formControlName="imagePath">
   </mat-form-field>
-  
+ 
     <mat-card-actions>
         <button  mat-raised-button color="primary" type="submit">
           Submit

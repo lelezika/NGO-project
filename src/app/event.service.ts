@@ -15,7 +15,9 @@ export class EventService {
   //  private url = '/assets/mock-events.json';
   private url = 'http://localhost:4000/api/events';
   private httpOptions = {
-    headers: new HttpHeaders({'content-Type': 'application/json'})
+    headers: new HttpHeaders({
+      'content-Type': 'multipart/form-data; boundary=------FORM_BOUNDARY--'
+    })
   };
   private headerSource = new BehaviorSubject<string>(null);
   moduleHeader = this.headerSource.asObservable();
@@ -62,7 +64,11 @@ export class EventService {
   }
 
   updateEvent(event: NgoEvent): Observable<any> {
-    return this.http.put(this.url+"/"+event.id, event, this.httpOptions)
+    let formData = new FormData();
+    for (const key of Object.keys(event)) {
+      formData.append(key, event[key]);
+    }
+    return this.http.put(this.url+"/"+event.id, formData)
       .pipe(catchError(this.handleError('updateEvent', event)));
   }
   
