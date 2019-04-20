@@ -34,7 +34,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogoClicked() {
     if ( this.userIsAuthenticated) {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/admin']);
     } else {
       this.router.navigate(['']);
     }
