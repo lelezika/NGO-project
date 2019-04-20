@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { Event } from '../event';
 
 @Component({
   selector: 'app-event-registration-form',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class EventRegistrationFormComponent implements OnInit {
 
+  event: Event;
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -20,10 +23,25 @@ export class EventRegistrationFormComponent implements OnInit {
   });
 
   constructor(
-    public dialogRef: MatDialogRef<EventRegistrationFormComponent>
-  ) { }
+    public dialogRef: MatDialogRef<EventRegistrationFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.event = data.selectedEvent;
+  }
 
   ngOnInit() {
+  }
+
+  adultSubtotal(form: FormGroup): number {
+    return form.get('amountAdults').value*this.event.adultTicketPrice;
+  }
+
+  childSubtotal(form: FormGroup): number {
+    return form.get('amountChildren').value*this.event.childTicketPrice;
+  }
+
+  totalPrice(form: FormGroup): number {
+    return this.adultSubtotal(form) + this.childSubtotal(form);
   }
 
   onCancel() {

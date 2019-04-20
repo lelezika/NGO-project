@@ -46,7 +46,10 @@ export class EventDetailComponent implements OnInit {
 
   displayForm() {
     const dialogRef = this.dialog.open(EventRegistrationFormComponent, {
-      width: '50%'
+      width: '50%',
+      data: {
+        selectedEvent: this.selectedEvent
+      }
     });
   }
 

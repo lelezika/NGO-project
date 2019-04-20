@@ -1,28 +1,52 @@
 <h1 mat-dialog-title>Event Name - Registration</h1>
 <div mat-dialog-content [formGroup]="profileForm">
-    <mat-form-field>
-      <input matInput placeholder="First Name" formControlName="firstName" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Last Name" formControlName="lastName" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Email Address" formControlName="emailAddress" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Contact No." formControlName="contactNumber" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Address" formControlName="address" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="No. Adults" type="number" formControlName="amountAdults" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="No. Children" type="number" formControlName="amountChildren" />
-    </mat-form-field>
+  <mat-vertical-stepper linear="true" #stepper>
+    <mat-step [stepControl]="profileForm">
+      <ng-template matStepLabel>Enter Details</ng-template>
+      <h2>Event: {{ event.eventName }}</h2>
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email Address" formControlName="emailAddress" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Contact No." formControlName="contactNumber" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="address" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="No. Adults" type="number" formControlName="amountAdults" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="No. Children" type="number" formControlName="amountChildren" />
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button matStepperNext>Continue</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="profileForm">
+      <ng-template matStepLabel>Review Details</ng-template>
+      <h2>Prices</h2>
+      <p>Adult ticket subtotal: ${{ adultSubtotal(profileForm) }}</p>
+      <p>Children ticket subtotal: ${{ childSubtotal(profileForm) }}</p>
+      <h3>Total price: ${{ totalPrice(profileForm) }}</h3>
+      <h2>Details</h2>
+      <p>First Name: {{ profileForm.get('firstName').value }}</p>
+      <p>Last Name: {{ profileForm.get('lastName').value }}</p>
+      <p>Email Address: {{ profileForm.get('emailAddress').value }}</p>
+      <p>Contact Number: {{ profileForm.get('contactNumber').value }}</p>
+      <p>Address: {{ profileForm.get('address').value }}</p>
+      <p><strong>Is this okay?</strong></p>
+      <div>
+        <button mat-button matStepperPrevious>Go Back</button>
+        <button mat-button (click)="onContinue()">Confirm Registration</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>
-<mat-dialog-actions>
-  <button mat-button type="button" (click)="onCancel()">Cancel</button>
-  <button mat-button type="button" (click)="onContinue()">Continue</button>
-</mat-dialog-actions>
