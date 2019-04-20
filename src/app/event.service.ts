@@ -34,18 +34,12 @@ export class EventService {
   }
 
   getOneEvent(id: string): Observable<NgoEvent> {
-    return this.http.get<NgoEvent[]>(this.url)
+    return this.http.get<NgoEvent>(this.url+"/"+id)
       .pipe(
-        map((data: any[]) => {
-          const matches = [];
-          for (var item of data) {
-            if (item._id === id) {
-              item.id = item._id;
-              delete item._id;
-              matches.push(item);
-            }
-          }
-          return matches[0];
+        map((data: any) => {
+          data.id = data._id;
+          delete data._id;
+          return data;
         }),
         catchError(this.handleError<NgoEvent[]>('getEventList', null))
       );
