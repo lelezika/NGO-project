@@ -25,6 +25,13 @@ export class EventService {
   getEventList(): Observable<Event[]> {
     return this.http.get<Event[]>(this.url)
       .pipe(
+        map((events: any[]) => {
+          for (event of events) {
+            event.id = event._id;
+            delete event._id;
+          }
+          return events;
+        }),
         catchError(this.handleError<Event[]>('getEventList', []))
       );
   }
@@ -35,7 +42,9 @@ export class EventService {
         map(events => {
           const matches = [];
           for (event of events) {
-            if (event.id === id) {
+            if (event._id === id) {
+              event.id = event._id;
+              delete event._id;
               matches.push(event);
             }
           }
@@ -53,7 +62,7 @@ export class EventService {
   }
 
   updateEvent(event: Event): Observable<any> {
-    return this.http.put(this.url, event, this.httpOptions)
+    return this.http.put(this.url+"/"+event.id, event, this.httpOptions)
       .pipe(catchError(this.handleError('updateEvent', event)));
   }
   

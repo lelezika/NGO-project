@@ -41,7 +41,7 @@ router.post(
 /** UPDATE Event */
 router.put(
   '/:id',
-  checkAuth,
+  checkAuth, (req, res, next) => {
     if(req.file){
       const url = req.protocol + "://" + req.get("host");
     }

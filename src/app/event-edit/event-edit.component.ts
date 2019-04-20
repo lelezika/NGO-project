@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 import { EventService } from '../event.service';
 import { Event, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
 
@@ -43,19 +46,23 @@ export class EventEditComponent implements OnInit {
       .subscribe(data => {
         // Make a deep copy of data
         this.selectedEvent = Object.assign({}, data);
-	// so that these delete statements do not affect this.selectedEvent
-	delete data._id;
-	delete data.id;
+        // so that these delete statements do not affect this.selectedEvent
+        delete data.id;
         this.eventForm.setValue(data);
       });
   }
 
   onSubmit() {
-    Object.assign(this.selectedEvent, this.eventForm.value);
+    this.selectedEvent = Object.assign(this.selectedEvent, this.eventForm.value);
     this.eventService.updateEvent(this.selectedEvent)
-      .subscribe(() =>
-        this.router.navigate('../../', {relativeTo: this.route})
-      );
+		  .pipe(
+			catchError((error) => {
+			  console.error(`ERROR: ${error}`);
+				return of(this.selectedEvent);
+			}))
+      .subscribe(() => {
+        this.router.navigate(['../../'], {relativeTo: this.route});
+      });
   }
 
 }
