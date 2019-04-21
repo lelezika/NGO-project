@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require('multer');
 
 const Event = require('../models/eventModel');
+const EventImage = require("../models/image");
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
@@ -53,9 +54,12 @@ router.post(
 router.put('/:id', checkAuth,
   upload.single('file'),
   (req, res, next) => {
+    let eventId = req.params.id;
     if(req.file){
-      req.body.imagePath = req.file.path;
+      req.body.filePath = req.file.path;
+      req.body.imagePath = '/images/' + eventId;
     } else {
+      req.body.filePath = '';
       req.body.imagePath = '';
     }
     console.log(req.file);
@@ -73,10 +77,15 @@ router.put('/:id', checkAuth,
       childTicketPrice: req.body.childTicketPrice,
       imagePath: req.body.imagePath
     };
-    Event.findOneAndUpdate({_id: req.params.id}, eventData, {},
+    Event.findOneAndUpdate({_id: eventId}, eventData, {},
       function(err, doc) {
         if (err) return res.status(500, {error: err});
-        res.status(200).json({ message: "Update successful!" });
+	EventImage.findOneAndUpdate({ eventId: eventId },
+          { filePath: req.body.filePath }, { upsert: true },
+          function(err, doc) {
+            if (err) return res.status(500, {error: err});
+            res.status(200).json({ message: "Update successful!" });
+        });
     });
   }
 );
