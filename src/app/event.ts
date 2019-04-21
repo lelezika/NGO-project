@@ -21,3 +21,19 @@ export class NgoEvent {
   adultTicketPrice: number;
   childTicketPrice: number;
 }
+
+export const DEFAULT_EVENT: NgoEvent = {
+  id: 'INVALID',
+  eventName: 'Invalid Event',
+  description: 'Invalid Event',
+  category: 'Presentation',
+  startDate: '',
+  startTime: '',
+  endDate: '',
+  endTime: '',
+  location: 'Nowhere',
+  status: 'Inactive',
+  imagePath: '',
+  adultTicketPrice: 9999.99,
+  childTicketPrice: 9999.99,
+};

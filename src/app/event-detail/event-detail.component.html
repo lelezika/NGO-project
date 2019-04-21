@@ -23,7 +23,7 @@
     </mat-card-actions>
   </mat-card>
   <mat-card class="event-description">
-    <img mat-card-image [src]="imageUrl" alt="Image Not Found" />
+    <app-event-image [event]="selectedEvent"></app-event-image>
     <mat-card-content>
       <p class="description-text">
         {{ selectedEvent.description }}

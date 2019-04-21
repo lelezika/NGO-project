@@ -5,7 +5,7 @@
         <mat-card-title>{{ event.eventName }}</mat-card-title>
         <mat-card-subtitle>{{ event.location }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="/assets/image-not-found.png" alt="Image Not Found" />
+      <app-event-image [event]="event"></app-event-image>
       <mat-card-actions>
         <button mat-button (click)="getDetailView(event.id)">View Details</button>
       </mat-card-actions>

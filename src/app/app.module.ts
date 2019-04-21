@@ -48,6 +48,7 @@ import { UserViewEventComponent } from './user-view-event/user-view-event.compon
 import { UserService } from './user.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
+import { EventImageComponent } from './event-image/event-image.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 
@@ -71,6 +72,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     UserViewEventComponent,
     SignupComponent,
     EventEditComponent,
+    EventImageComponent,
     UserEditComponent,
     UserDeleteComponent,
   ],
