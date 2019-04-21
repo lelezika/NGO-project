@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { User } from './user';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 
@@ -7,7 +10,12 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  url = "http://localhost:4000/api/user";
+  private users: User[] = [];
+  //  private url = '/assets/mock-events.json';
+  private url = 'http://localhost:4000/api/user';
+  private headerSource = new BehaviorSubject<string>(null);
+  moduleHeader = this.headerSource.asObservable();
+
 
   updateUser(arg0: import("./user").User) {
     throw new Error("Method not implemented.");
@@ -25,12 +33,18 @@ export class UserService {
     return this.http.get(this.url);
   }
 
-  //Post a new User
-  postUser(newUser:User)
-  {
-    this.nUser=newUser;
-    return this.http.post(this.url,this.nUser);
+  // Post a new User
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.url, user)
+      .pipe(
+        catchError(this.handleError<User>('addUser', undefined))
+      );
   }
+
+  // addUser(newUser:User)
+  // {
+  //   return this.http.post(this.url,newUser);
+  // }
 
   //Get a single User by email before update or delete
   getForEdit(suppliedEmail:string)
@@ -54,13 +68,14 @@ export class UserService {
    return this.http.delete(this.url+suppliedEmail);
   }
 
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); 
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  }
+
 }
 
 
-export class User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  role: string;
-}

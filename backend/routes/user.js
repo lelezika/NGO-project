@@ -73,7 +73,7 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-/*Save User */
+/*Post New User */
 router.post("/", checkAuth, function(req, res, next) {
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({

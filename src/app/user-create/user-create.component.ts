@@ -36,11 +36,16 @@ export class UserCreateComponent implements OnInit {
     this.userData.password = this.userForm.get("password").value
     this.userData.role = this.userForm.get("role").value
 
-    this.userservice.postUser(this.userData)
-        // .subscribe(user => this.userservice.push(user));
-    console.log(this.userData);
-    this.router.navigate(["/admin/user-management"]);
+    this.userservice.addUser(this.userData).subscribe(res => {
+      //alert("Successfully added a new user");
+      this.router.navigate(["/admin/user-management"]);
+    },
+    error => {
+      console.log("Error while adding new user");
+    });
   }
+
+
   onCancel() {
    //    this.eventservice.addEvent(this.eventData).subscribe(event => this.heroes.push(event));
     console.log(this.userData);
