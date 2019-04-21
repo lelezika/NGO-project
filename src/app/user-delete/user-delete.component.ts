@@ -27,7 +27,6 @@ export class UserDeleteComponent implements OnInit {
   retrived_user: User = new User();
 
   ngOnInit() {
-    // //Fetch the Email from the activated route
     this.activatedRoute.params.subscribe(
       params => (this.email = params["email"])
     );

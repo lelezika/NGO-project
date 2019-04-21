@@ -70,7 +70,7 @@ export class AuthService {
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userRole);
           if(this.userRole === 'User'){
-            this.router.navigate(["/user"]);
+            this.router.navigate(["/eventlist"]);
           } else if(this.userRole === 'Admin'){
             this.router.navigate(["/admin"]);
           }
