@@ -40,7 +40,6 @@ export class EventCreateComponent implements OnInit {
 
   onSubmit(){
     Object.assign(this.eventData, this.eventForm.value);
-    console.log(this.eventData);
     this.eventservice.addEvent(this.eventData).subscribe(res => {
       //alert("Successfully added a new event");
       this.router.navigate(["/admin/event-management"]);

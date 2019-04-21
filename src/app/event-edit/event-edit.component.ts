@@ -52,7 +52,6 @@ export class EventEditComponent implements OnInit {
           delete data.__v;
         }
         delete data.id;
-        console.log(data);
         this.eventForm.setValue(data);
       });
   }
