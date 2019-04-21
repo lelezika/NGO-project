@@ -15,6 +15,8 @@ import { EventRegistrationFormComponent } from '../event-registration-form/event
 export class EventDetailComponent implements OnInit {
 
   selectedEvent: NgoEvent;
+  defaultUrl = "/assets/image-not-found.png";
+  imageUrl: string;
 
   constructor(
     private eventService: EventService,
@@ -30,6 +32,7 @@ export class EventDetailComponent implements OnInit {
       status: 'Active', imagePath: null,
       adultTicketPrice: 2.99, childTicketPrice: 1.99
     };
+	this.imageUrl = this.defaultUrl;
   }
 
   ngOnInit() {
@@ -39,9 +42,12 @@ export class EventDetailComponent implements OnInit {
   getEvent() {
     const id = this.route.snapshot.paramMap.get('id');
     this.eventService.getOneEvent(id)
-      .subscribe(
-        data => this.selectedEvent = data
-      );
+      .subscribe(data => {
+        this.selectedEvent = data;
+        if (this.selectedEvent.imagePath != '') {
+          this.imageUrl = "http://localhost:4000"+this.selectedEvent.imagePath;
+        }
+    });
   }
 
   displayForm() {
