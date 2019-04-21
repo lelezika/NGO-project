@@ -14,9 +14,6 @@ export class EventService {
   private events: NgoEvent[] = [];
   //  private url = '/assets/mock-events.json';
   private url = 'http://localhost:4000/api/events';
-  private httpOptions = {
-    headers: new HttpHeaders({'content-Type': 'application/json'})
-  };
   private headerSource = new BehaviorSubject<string>(null);
   moduleHeader = this.headerSource.asObservable();
 
@@ -37,32 +34,40 @@ export class EventService {
   }
 
   getOneEvent(id: string): Observable<NgoEvent> {
-    return this.http.get<NgoEvent[]>(this.url)
+    return this.http.get<NgoEvent>(this.url+"/"+id)
       .pipe(
-        map((data: any[]) => {
-          const matches = [];
-          for (var item of data) {
-            if (item._id === id) {
-              item.id = item._id;
-              delete item._id;
-              matches.push(item);
-            }
-          }
-          return matches[0];
+        map((data: any) => {
+          data.id = data._id;
+          delete data._id;
+          return data;
         }),
         catchError(this.handleError<NgoEvent[]>('getEventList', null))
       );
   }
 
   addEvent(event: NgoEvent): Observable<NgoEvent> {
-    return this.http.post<NgoEvent>(this.url, event, this.httpOptions)
+    let formData = new FormData();
+    for (const key of Object.keys(event)) {
+      formData.append(key, event[key]);
+    }
+    return this.http.post<NgoEvent>(this.url, formData)
       .pipe(
         catchError(this.handleError<NgoEvent>('addEvent', undefined))
       );
   }
 
   updateEvent(event: NgoEvent): Observable<any> {
-    return this.http.put(this.url+"/"+event.id, event, this.httpOptions)
+    let formData = new FormData();
+    for (const key of Object.keys(event)) {
+      formData.append(key, event[key]);
+    }
+    formData.delete('file');
+    if (event['file']) {
+      formData.append('file', event['file'], event['file'].name);
+    } else {
+      formData.append('file', null);
+    }
+    return this.http.put(this.url+"/"+event.id, formData)
       .pipe(catchError(this.handleError('updateEvent', event)));
   }
   

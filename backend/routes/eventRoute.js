@@ -1,15 +1,26 @@
 const express = require("express");
+const multer = require('multer');
 
 const Event = require('../models/eventModel');
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'backend/images/upload');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.substring(6));
+  }
+});
+const upload = multer({storage: storage});
+
 
 // Post new Event
 router.post(
   "",
-  checkAuth,
+  checkAuth, upload.any(),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
     const event = new Event({
@@ -39,14 +50,16 @@ router.post(
 );
 
 /** UPDATE Event */
-router.put(
-  '/:id',
-  checkAuth, (req, res, next) => {
+router.put('/:id', checkAuth,
+  upload.single('file'),
+  (req, res, next) => {
     if(req.file){
-      const url = req.protocol + "://" + req.get("host");
+      req.body.imagePath = req.file.path;
+    } else {
+      req.body.imagePath = '';
     }
-    const event = new Event({
-      _id: req.body.id,
+    console.log(req.file);
+    const eventData = {
       eventName: req.body.eventName,
       description: req.body.description,
       category: req.body.category,
@@ -58,11 +71,12 @@ router.put(
       endTime: req.body.endTime,
       adultTicketPrice: req.body.adultTicketPrice,
       childTicketPrice: req.body.childTicketPrice,
-      imagePath: imagePath
-    });
-    console.log(event);
-    Event.updateOne({ _id: req.params.id }, event).then(result => {
-      res.status(200).json({ message: "Update successful!" });
+      imagePath: req.body.imagePath
+    };
+    Event.findOneAndUpdate({_id: req.params.id}, eventData, {},
+      function(err, doc) {
+        if (err) return res.status(500, {error: err});
+        res.status(200).json({ message: "Update successful!" });
     });
   }
 );
