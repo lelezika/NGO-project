@@ -102,8 +102,6 @@
    <mat-card>
       <mat-card-content>
     <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" novalidate>
-        <!--{{loginForm.value | json}}-->
-    
       <mat-form-field>
           <input
           matInput
@@ -121,8 +119,6 @@
           name="lastName"
           placeholder="Last Name"
         />
-        <!-- <mat-error *ngIf="postForm.getControl('title').invalid"></mat-error> -->
-        <!-- <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error> -->
       </mat-form-field>
       <mat-form-field>
           <input
