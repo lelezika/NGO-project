@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-content>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" novalidate>
+    <!--{{loginForm.value | json}}-->
+
+  <mat-form-field>
+      <input
+      matInput
+      [(ngModel)]="firstName"
+      type="text"
+      name="firstName"
+      placeholder="First Name"
+    />
+  </mat-form-field>
+<mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="lastName"
+      type="text"
+      name="lastName"
+      placeholder="Last Name"
+    />
+    <!-- <mat-error *ngIf="postForm.getControl('title').invalid"></mat-error> -->
+    <!-- <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error> -->
+  </mat-form-field>
+  <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="email"
+        type="text"
+        name="email"
+        placeholder="Email"
+      />
+    </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="password"
+      type="password"
+      name="password"
+      placeholder="Password"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-select placeholder="Role" [(ngModel)]="role" name="role">
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="User">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  <!-- <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="role"
+        type="text"
+        name="role"
+        placeholder="Role"
+      />
+    </mat-form-field> -->
+
+  <mat-card-actions>
+      <button  mat-raised-button color="primary" type="submit">
+        Submit
+      </button>
+
+      <button  mat-raised-button color="warn" type="reset">
+        Cancel
+      </button>
+    </mat-card-actions>
+</form>
+</mat-card-content>
+</mat-card>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventService } from '../event.service';
-import { ParamMap, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgoEvent, EVENT_CATEGORIES, EVENT_STATUSES } from '../event';
-import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-event-create',

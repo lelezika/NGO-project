@@ -15,6 +15,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AdminAuthGuard } from './auth/admin-auth.guard';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
 
 const routes: Routes = [
   // {path: '', redirectTo: '/eventlist', pathMatch: 'full' },
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], children: [
     {path: 'user-management', component: UserManagementComponent},
     {path: 'user-create', component: UserCreateComponent},
+    {path: 'user-edit:email', component: UserEditComponent},
+    {path: 'user-delete:email', component: UserDeleteComponent},
     {path: 'event-management', component: EventManagementComponent},
     {path: 'create-event', component: EventCreateComponent},
     { path: 'eventlist', component: UserViewComponent },
