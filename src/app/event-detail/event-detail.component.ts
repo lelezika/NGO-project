@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../event.service';
-import { NgoEvent, EVENT_CATEGORIES } from '../event';
+import { NgoEvent, EVENT_CATEGORIES, DEFAULT_EVENT } from '../event';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -24,15 +24,8 @@ export class EventDetailComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.selectedEvent = {id: '1', eventName: 'Event 1',
-      description: 'This is an event', category: 'Presentation',
-      startDate: '', startTime: '',
-      endDate: '', endTime: '',
-      location: 'nowhere',
-      status: 'Active', imagePath: null,
-      adultTicketPrice: 2.99, childTicketPrice: 1.99
-    };
-	this.imageUrl = this.defaultUrl;
+    this.selectedEvent = DEFAULT_EVENT;
+      this.imageUrl = this.defaultUrl;
   }
 
   ngOnInit() {
@@ -44,9 +37,6 @@ export class EventDetailComponent implements OnInit {
     this.eventService.getOneEvent(id)
       .subscribe(data => {
         this.selectedEvent = data;
-        if (this.selectedEvent.imagePath != '') {
-          this.imageUrl = "http://localhost:4000"+this.selectedEvent.imagePath;
-        }
     });
   }
 
@@ -60,7 +50,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   return() {
-  this.router.navigate(['../../eventlist'], {relativeTo: this.route});
+    this.router.navigate(['../../eventlist'], {relativeTo: this.route});
   }
 
 }
