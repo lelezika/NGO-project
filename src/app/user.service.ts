@@ -10,6 +10,9 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
+  nUser:User;
+  eUser:User;
+  dUser:User;
   private users: User[] = [];
   //  private url = '/assets/mock-events.json';
   private url = 'http://localhost:4000/api/user';
@@ -17,15 +20,7 @@ export class UserService {
   moduleHeader = this.headerSource.asObservable();
 
 
-  updateUser(arg0: import("./user").User) {
-    throw new Error("Method not implemented.");
-  }
-
   constructor(private http:HttpClient) { }
-
-  nUser:User;
-  eUser:User;
-  dUser:User;
 
   //Get all the Users
   getUsers()
@@ -41,11 +36,7 @@ export class UserService {
       );
   }
 
-  // addUser(newUser:User)
-  // {
-  //   return this.http.post(this.url,newUser);
-  // }
-
+ 
   //Get a single User by email before update or delete
   getForEdit(suppliedEmail:string)
   {

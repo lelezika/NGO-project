@@ -49,6 +49,8 @@ import { UserService } from './user.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventImageComponent } from './event-image/event-image.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { EventImageComponent } from './event-image/event-image.component';
     SignupComponent,
     EventEditComponent,
     EventImageComponent,
+    UserEditComponent,
+    UserDeleteComponent,
   ],
   imports: [
     AppRoutingModule,

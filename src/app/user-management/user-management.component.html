@@ -19,8 +19,8 @@
       <td>{{user.lastName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
-      <td> <input type="button" (click)="userUpdate(i)" text-aligned="center" value="Edit"> </td>
-      <td> <input type="button" (click)="userDelete(i)" text-aligned="center" value="Delete"></td>
+      <td><a [routerLink]="['/admin/user-edit',user.email]" text-aligned="center" value="Edit">Edit</a></td>
+      <td><a [routerLink]="['/admin/user-delete',user.email]" text-aligned="center" value="Delete">Delete</a></td>
     </tr>
   </tbody>
 </table>

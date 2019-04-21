@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-management',
@@ -20,7 +21,7 @@ export class UserManagementComponent implements OnInit {
   //      email: 'test3@email.com', password: '', role: 'test3'
   //     },
   //   ];
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router:Router) { }
 
   ngOnInit() {
     // this.userService.getUsers().subscribe(
@@ -40,11 +41,13 @@ export class UserManagementComponent implements OnInit {
     console.log(this.userslist)
   }
 
-  public userDelete(i: any) {
-    this.userService.deleteUser(this.userslist[i].email);
-  }
-  public userUpdate(i: any) {
-    this.userService.updateUser(this.userslist[i]);
-  }
+  // public userDelete(i: any) {
+  //   this.userService.deleteUser(this.userslist[i].email);
+  // }
+  // public userUpdate(i: any) {
+  //   this.userService.updateUser(this.userslist[i]);
+  // }
+
+ 
 }
 
