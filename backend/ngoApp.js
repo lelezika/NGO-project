@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const eventsRoutes = require("./routes/eventRoute");
 const userRoutes= require("./routes/user");
 const userRegistrationRoutes = require("./routes/userRegistration");
+const imageRoutes = require("./routes/image");
 
 const ngoApp = express();
 
@@ -46,5 +47,6 @@ ngoApp.use((req, res, next) => {
 ngoApp.use("/api/events", eventsRoutes);
 ngoApp.use("/api/user", userRoutes);
 ngoApp.use("/api/userRegistration", userRegistrationRoutes);
+ngoApp.use("/images", imageRoutes);
 
 module.exports = ngoApp;
