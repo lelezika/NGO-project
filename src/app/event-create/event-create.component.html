@@ -14,7 +14,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>category</mat-label>
+    <mat-label>status</mat-label>
     <mat-select formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status">
         {{status}}
@@ -45,9 +45,6 @@
   </mat-form-field>
   <mat-form-field >
     <input type="number" matInput placeholder="childTicketPrice" formControlName="childTicketPrice">
-  </mat-form-field>
-  <mat-form-field >
-    <input type="url" matInput placeholder="image url" formControlName="imageurl">
   </mat-form-field>
   
     <mat-card-actions>

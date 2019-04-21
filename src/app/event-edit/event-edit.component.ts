@@ -48,7 +48,11 @@ export class EventEditComponent implements OnInit {
         // Make a deep copy of data
         this.selectedEvent = Object.assign({}, data);
         // so that the following statement does not affect this.selectedEvent
+        if(data.__v !== undefined) {
+          delete data.__v;
+        }
         delete data.id;
+        console.log(data);
         this.eventForm.setValue(data);
       });
   }
@@ -59,6 +63,9 @@ export class EventEditComponent implements OnInit {
 
   onSubmit() {
     this.selectedEvent = Object.assign(this.selectedEvent, this.eventForm.value);
+		if (this.selectedEvent['imagePath'] === 'null') {
+		  this.selectedEvent['imagePath'] = '';
+		}
 		this.selectedEvent['file'] = this.selectedFile;
     this.eventService.updateEvent(this.selectedEvent)
 		  .pipe(

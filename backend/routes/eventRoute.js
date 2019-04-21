@@ -36,7 +36,7 @@ router.post(
       endTime: req.body.endTime,
       adultTicketPrice: req.body.adultTicketPrice,
       childTicketPrice: req.body.childTicketPrice,
-      imagePath: req.body.imagePath
+      imagePath: ''
     });
     event.save().then(createdEvent => {
       res.status(201).json({
