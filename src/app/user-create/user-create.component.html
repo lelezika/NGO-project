@@ -15,7 +15,10 @@
         <input matInput placeholder="Password" formControlName="password">
       </mat-form-field>
       <mat-form-field >
-        <input matInput matInput placeholder="Role" formControlName="role">
+          <mat-select placeholder="Role" name="role" formControlName="role">
+              <mat-option value="Admin">Admin</mat-option>
+              <mat-option value="User">User</mat-option>
+            </mat-select>
       </mat-form-field>
       <div class="filler-2"></div>
       <mat-card-actions>

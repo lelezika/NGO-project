@@ -15,7 +15,7 @@ export class UserService {
   dUser:User;
   private users: User[] = [];
   //  private url = '/assets/mock-events.json';
-  private url = 'http://localhost:4000/api/user';
+  private url = 'http://localhost:4000/api/user/';
   private headerSource = new BehaviorSubject<string>(null);
   moduleHeader = this.headerSource.asObservable();
 
@@ -38,9 +38,9 @@ export class UserService {
 
  
   //Get a single User by email before update or delete
-  getForEdit(suppliedEmail:string)
+  getUserByEmail(email:string)
   {
-   return this.http.get(this.url+suppliedEmail);
+   return this.http.get(this.url+email);
   }
 
   //Edit the user

@@ -26,8 +26,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard], children: [
     {path: 'user-management', component: UserManagementComponent},
     {path: 'user-create', component: UserCreateComponent},
-    {path: 'user-edit:email', component: UserEditComponent},
-    {path: 'user-delete:email', component: UserDeleteComponent},
+    {path: 'user-edit/:email', component: UserEditComponent},
+    {path: 'user-delete/:email', component: UserDeleteComponent},
     {path: 'event-management', component: EventManagementComponent},
     {path: 'create-event', component: EventCreateComponent},
     { path: 'eventlist', component: UserViewComponent },

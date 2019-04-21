@@ -24,8 +24,8 @@ export class UserEditComponent implements OnInit {
   email: string;
   password: string;
   role: string;
-  nUser: User;
-  displayData: any = [];
+  retrived_user: User = new User();
+  updated_user: any;
 
   ngOnInit() {
     // //Fetch the Email from the activated route
@@ -34,14 +34,15 @@ export class UserEditComponent implements OnInit {
     );
 
     // Call the api to get the particular user's details and display the values in the form controls
-    this.userServices.getForEdit(this.email).subscribe(data => {
-      this.displayData = data;
-      this.firstName = this.displayData["firstName"];
-      this.lastName = this.displayData["lastName"];
-      this.password = this.displayData["password"];
-      this.role = this.displayData["role"];
+    this.userServices.getUserByEmail(this.email).subscribe((data:User) => {
+      this.retrived_user = data;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.password = data.password;
+      this.role = data.role;
     });
   }
+  
 
   onSubmit(userForm) {
     this.firstName = userForm.value["firstName"];
@@ -49,10 +50,8 @@ export class UserEditComponent implements OnInit {
     this.email = userForm.value["email"];
     this.password = userForm.value["password"];
     this.role = userForm.value["role"];
-    //Create a new User with the model and send the data to service
 
-
-    this.nUser = {
+    this.updated_user = {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
@@ -60,13 +59,13 @@ export class UserEditComponent implements OnInit {
       role: this.role
     };
 
-    this.userServices.postForEdit(this.nUser).subscribe(
+    this.userServices.postForEdit(this.updated_user).subscribe(
       res => {
         // alert("Successfully edited the user");
         this.router.navigate(["admin/user-management"]);
       },
       error => {
-        console.log("Error while adding new user");
+        console.log("Error while editing this user");
       }
     );
   }
