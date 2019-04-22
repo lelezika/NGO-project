@@ -48,9 +48,6 @@ export class EventEditComponent implements OnInit {
         // Make a deep copy of data
         this.selectedEvent = Object.assign({}, data);
         // so that the following statement does not affect this.selectedEvent
-        if(data.__v !== undefined) {
-          delete data.__v;
-        }
         delete data.id;
         this.eventForm.setValue(data);
       });

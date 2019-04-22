@@ -26,6 +26,7 @@ export class EventService {
           for (const item of data) {
             item.id = item._id;
             delete item._id;
+            delete item.__v;
           }
           return data;
         }),
@@ -39,6 +40,7 @@ export class EventService {
         map((data: any) => {
           data.id = data._id;
           delete data._id;
+          delete data.__v;
           return data;
         }),
         catchError(this.handleError<NgoEvent[]>('getEventList', null))
