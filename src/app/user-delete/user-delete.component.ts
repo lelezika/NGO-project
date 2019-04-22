@@ -53,6 +53,10 @@ export class UserDeleteComponent implements OnInit {
       }
     );
   }
+
+  onCancel(){
+    this.router.navigate(["admin/user-management"]);
+  }
 }
 
 
