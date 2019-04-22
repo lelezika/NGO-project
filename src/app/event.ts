@@ -20,7 +20,6 @@ export class NgoEvent {
   imagePath: string;
   adultTicketPrice: number;
   childTicketPrice: number;
-  __v:string
 }
 
 export const DEFAULT_EVENT: NgoEvent = {
@@ -37,5 +36,4 @@ export const DEFAULT_EVENT: NgoEvent = {
   imagePath: '',
   adultTicketPrice: 9999.99,
   childTicketPrice: 9999.99,
-  __v:''
 };
