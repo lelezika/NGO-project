@@ -14,7 +14,7 @@ export class UserEditComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private userServices: UserService,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
   ) {}
@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     // //Fetch the Email from the activated route
-    this.activatedRoute.params.subscribe(
+    this.route.params.subscribe(
       params => (this.email = params["email"])
     );
 
@@ -68,5 +68,9 @@ export class UserEditComponent implements OnInit {
         console.log("Error while editing this user");
       }
     );
+  }
+  
+  onCancel(){
+    this.router.navigate(["admin/user-management"]);
   }
 }
