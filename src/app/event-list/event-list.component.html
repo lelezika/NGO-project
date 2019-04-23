@@ -1,6 +1,6 @@
 <mat-grid-list cols="4" rowHeight="3:4">
   <mat-grid-tile *ngFor="let event of events;">
-    <mat-card class="event-card">
+    <mat-card class="{{ getClass(event.status) }}">
       <mat-card-header>
         <mat-card-title>{{ event.eventName }}</mat-card-title>
         <mat-card-subtitle>{{ event.location }}</mat-card-subtitle>

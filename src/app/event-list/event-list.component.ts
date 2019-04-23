@@ -30,4 +30,14 @@ export class EventListComponent implements OnInit {
     this.router.navigate(['../events', id], {relativeTo: this.route});
   }
 
+  getClass(status) {
+    let result = '';
+    if (status === 'Active') {
+      result += 'event-card';
+    } else if (status === 'Inactive') {
+      result += 'event-card event-inactive';
+    }
+    return result + ' mat-card';
+  }
+
 }

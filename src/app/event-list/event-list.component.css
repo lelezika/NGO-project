@@ -1,6 +1,9 @@
 .event-card {
   max-width: 80%;
 }
+.event-inactive {
+  background-color: #fdd;
+}
 .event-card img {
   background-size: cover;
 }
