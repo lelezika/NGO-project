@@ -74,15 +74,21 @@ router.put('/:id', checkAuth,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
       adultTicketPrice: req.body.adultTicketPrice,
-      childTicketPrice: req.body.childTicketPrice,
-      imagePath: req.body.imagePath
+      childTicketPrice: req.body.childTicketPrice
     };
+    if (req.body.imagePath !== '') {
+      eventData['imagePath'] = req.body.imagePath;
+    }
     Event.findOneAndUpdate({_id: eventId}, eventData, {},
       function(err, doc) {
         if (err) return res.status(500, {error: err});
-	EventImage.findOneAndUpdate({ eventId: eventId },
-          { filePath: req.body.filePath }, { upsert: true },
-          function(err, doc) {
+        let updateParams = { filePath: req.body.filePath };
+        if (req.body.filePath === '') {
+          updateParams = {};
+        }
+        EventImage.findOneAndUpdate({ eventId: eventId },
+          updateParams,
+        function(err, doc) {
             if (err) return res.status(500, {error: err});
             res.status(200).json({ message: "Update successful!" });
         });
