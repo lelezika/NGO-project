@@ -54,10 +54,11 @@ export class EventEditComponent implements OnInit {
   }
 
   capitalizeText(fieldName) {
-    const text = this.eventForm.value[fieldName];
+    let text = this.eventForm.value[fieldName];
     if (text.length > 0 && text[0] === text[0].toLowerCase()) {
       text = text[0].toUpperCase() + text.substring(1);
     }
+
     let updateParams = {};
     updateParams[fieldName] = text;
     this.eventForm.patchValue(updateParams);
