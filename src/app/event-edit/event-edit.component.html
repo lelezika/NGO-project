@@ -2,10 +2,11 @@
   <mat-card-content>
     <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="example-form">
       <mat-form-field >
-        <input  matInput placeholder="event name" formControlName="eventName">
+        <input  matInput placeholder="Event Name" formControlName="eventName"
+          (change)="capitalizeText('eventName')" >
       </mat-form-field>
       <mat-form-field>
-        <mat-label>category</mat-label>
+        <mat-label>Category</mat-label>
         <mat-select formControlName="category">
           <mat-option *ngFor="let category of categories" [value]="category">
             {{category}}
@@ -13,7 +14,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>status</mat-label>
+        <mat-label>Status</mat-label>
         <mat-select formControlName="status">
           <mat-option *ngFor="let status of statuses" [value]="status">
             {{status}}
@@ -21,32 +22,34 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field >
-        <input matInput placeholder="location" formControlName="location">
+        <input matInput placeholder="Location" formControlName="location"
+          (change)="capitalizeText('location')">
       </mat-form-field>
       <mat-form-field >
-        <input matInput placeholder="description" formControlName="description">
+        <input matInput placeholder="Description" formControlName="description"
+	  (change)="capitalizeText('description')">
       </mat-form-field>
       <mat-form-field >
-        <input type="date" matInput placeholder="start date" formControlName="startDate">
+        <input type="date" matInput placeholder="Start Date" formControlName="startDate">
       </mat-form-field>
       <mat-form-field >
-        <input type="date" matInput placeholder="end date" formControlName="endDate">
+        <input type="date" matInput placeholder="End Date" formControlName="endDate">
       </mat-form-field>
       <mat-form-field >
-        <input type="time" matInput placeholder="start time" formControlName="startTime">
+        <input type="time" matInput placeholder="Start Time" formControlName="startTime">
       </mat-form-field>
       <mat-form-field >
-        <input type="time" matInput placeholder="end time" formControlName="endTime">
+        <input type="time" matInput placeholder="End Time" formControlName="endTime">
       </mat-form-field>
       <mat-form-field >
-        <input type="number" matInput placeholder="adult ticket price" formControlName="adultTicketPrice">
+        <input type="number" matInput placeholder="Adult Ticket Price" formControlName="adultTicketPrice">
       </mat-form-field>
       <mat-form-field >
-        <input type="number" matInput placeholder="child ticket price" formControlName="childTicketPrice">
+        <input type="number" matInput placeholder="Child Ticket Price" formControlName="childTicketPrice">
       </mat-form-field>
       <mat-form-field >
-        <mat-label>image url path</mat-label>
-        <input type="text" matInput readonly placeholder="no file uploaded" formControlName="imagePath">
+        <mat-label>Image Url Path</mat-label>
+        <input type="text" matInput readonly placeholder="No File Uploaded" formControlName="imagePath">
       </mat-form-field>
       <input type="file" (change)="onFileChanged($event)"> 
       <mat-card-actions>
