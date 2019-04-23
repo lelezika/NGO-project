@@ -5,3 +5,7 @@ table {
     /* width: auto; */
     width: 600px;
   }
+
+div.create {
+  padding-bottom: 200px
+}
