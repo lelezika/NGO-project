@@ -1,6 +1,5 @@
-<mat-grid-list cols="4" rowHeight="3:4">
-  <mat-grid-tile *ngFor="let event of events;">
-    <mat-card class="{{ getClass(event.status) }}">
+<div class="event-grid">
+    <mat-card *ngFor="let event of events;" class="{{ getClass(event.status) }}">
       <mat-card-header>
         <mat-card-title>{{ event.eventName }}</mat-card-title>
         <mat-card-subtitle>{{ event.location }}</mat-card-subtitle>
@@ -10,5 +9,4 @@
         <button mat-button (click)="getDetailView(event.id)">View Details</button>
       </mat-card-actions>
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+</div>
