@@ -86,8 +86,9 @@ router.put('/:id', checkAuth,
         if (req.body.filePath === '') {
           updateParams = {};
         }
+        console.log(updateParams);
         EventImage.findOneAndUpdate({ eventId: eventId },
-          updateParams,
+          updateParams, { upsert: true },
         function(err, doc) {
             if (err) return res.status(500, {error: err});
             res.status(200).json({ message: "Update successful!" });
