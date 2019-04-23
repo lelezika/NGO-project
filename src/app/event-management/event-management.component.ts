@@ -19,12 +19,7 @@ export class EventManagementComponent implements OnInit {
 
   eventslist: NgoEvent[] = [];
 
-  displayedColumns: string[] = [
-    "event", "ctgy", "desc", "status", "location",
-    "sDate", "eDate", "sTime", "eTime",
-    "adltTktPrice", "chldTktPrice",
-    "img", "action"
-  ];
+  columnsToDisplay = ["Event", "Location","StartDate", "EndDate","Edit"];
   dataSource: MatTableDataSource<NgoEvent>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

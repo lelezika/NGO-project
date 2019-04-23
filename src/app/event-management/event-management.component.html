@@ -1,4 +1,4 @@
-<h3>Event Management</h3>
+<!-- <h3>Event Management</h3>
 <br>
 <table class="table table-bordered">
   <thead>
@@ -26,4 +26,49 @@
 <div class="create">
     <a  routerLink="/admin/create-event">Add a New Event</a>
 </div>
+ -->
 
+ <h3>Event Management</h3>
+ <br>
+ <div class="create">
+     <a  routerLink="/admin/create-event">Add a New Event</a>
+ </div>
+ <br>
+ <div class="mat-elevation-z8">
+ <table mat-table [dataSource]="eventslist" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Event">
+      <th mat-header-cell *matHeaderCellDef> Event </th>
+      <td mat-cell *matCellDef="let element"> {{element.eventName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="StartDate">
+      <th mat-header-cell *matHeaderCellDef> StartDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="EndDate">
+      <th mat-header-cell *matHeaderCellDef> EndDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate }} </td>
+    </ng-container>
+    <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> 
+            <a [routerLink]="['../edit-event',element.id]">Edit</a>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+  <mat-paginator #paginator
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true">
+</mat-paginator> 
+</div>
+  
