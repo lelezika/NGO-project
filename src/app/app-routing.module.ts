@@ -17,6 +17,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AdminAuthGuard } from './auth/admin-auth.guard';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 
 const routes: Routes = [
   // {path: '', redirectTo: '/eventlist', pathMatch: 'full' },
@@ -31,10 +32,12 @@ const routes: Routes = [
     {path: 'event-management', component: EventManagementComponent},
     {path: 'create-event', component: EventCreateComponent},
     { path: 'eventlist', component: UserViewComponent },
+    { path: 'events/registered', component: RegistrationSuccessComponent },
     { path: 'events/:id', component: UserViewEventComponent },
     { path: 'edit-event/:id', component: EventEditComponent }
   ]},
   { path: 'eventlist', component: EventListComponent },
+  { path: 'events/registered', component: RegistrationSuccessComponent },
   { path: 'events/:id', component: EventDetailComponent },
   // {path: 'add-user', component: AddUserComponent, canActivate: [AdminAuthGuard]},
   // {path: 'edit-user/:email', component: EditUserComponent, canActivate: [AdminAuthGuard]},
