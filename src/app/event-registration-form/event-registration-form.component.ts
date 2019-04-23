@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { NgoEvent } from '../event';
 
@@ -12,6 +13,7 @@ import { NgoEvent } from '../event';
 export class EventRegistrationFormComponent implements OnInit {
 
   event: NgoEvent;
+  route: ActivatedRoute;
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -24,9 +26,11 @@ export class EventRegistrationFormComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EventRegistrationFormComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.event = data.selectedEvent;
+    this.route = data.route;
   }
 
   ngOnInit() {
@@ -51,6 +55,7 @@ export class EventRegistrationFormComponent implements OnInit {
   onContinue() {
     console.warn(this.profileForm.value);
     this.dialogRef.close();
+    this.router.navigate(['../registered'], {relativeTo: this.route});
   }
 
 }

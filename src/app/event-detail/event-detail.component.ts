@@ -44,7 +44,8 @@ export class EventDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(EventRegistrationFormComponent, {
       width: '50%',
       data: {
-        selectedEvent: this.selectedEvent
+        selectedEvent: this.selectedEvent,
+        route: this.route,
       }
     });
   }

@@ -51,6 +51,7 @@ import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventImageComponent } from './event-image/event-image.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     EventImageComponent,
     UserEditComponent,
     UserDeleteComponent,
+    RegistrationSuccessComponent,
   ],
   imports: [
     AppRoutingModule,
