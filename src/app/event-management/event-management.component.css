@@ -1,11 +1,15 @@
-.even { background-color : lightgrey; }
+/* .even { background-color : lightgrey; }
 .odd { background-color: lightblue; }
 
 table {
-    /* width: auto; */
+    
     width: 600px;
   }
 
-div.create {
+a {
   padding-bottom: 200px
+} */
+
+table {
+  width: 100%;
 }

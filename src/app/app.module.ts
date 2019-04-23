@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -21,9 +22,8 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatStepperModule,
-  MatPaginator,
-  MatTooltip,
-  MatCard
+  MatPaginatorModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import { AdminAuthGuard } from './auth/admin-auth.guard';
@@ -63,8 +63,6 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
     EventManagementComponent,
     EventRegistrationFormComponent,
     LoginComponent,
-    MatPaginator,
-    MatTooltip,
     NavBarComponent,
     PageNotFoundComponent,
     UserCreateComponent,
@@ -101,6 +99,8 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
     MatSidenavModule,
     MatStepperModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   entryComponents: [
     EventRegistrationFormComponent
